@@ -10,7 +10,7 @@ class Plebeo {
     }
 
     fun togliBaiocchi(nBaiocchi: Int) : Boolean{
-
+        return false
     }
 
     fun compraMiracolo(descrizione : String, santo : String){
