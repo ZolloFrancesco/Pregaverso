@@ -9,5 +9,4 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
 
     }
-
 }
