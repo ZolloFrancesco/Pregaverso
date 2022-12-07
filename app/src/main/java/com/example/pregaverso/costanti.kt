@@ -1,7 +1,7 @@
 package com.example.pregaverso
 
-const val DATABASE_VERSION = 0
-const val DATABASE_NAME = "Pregaverso.db"
+const val VERSIONE_DATABASE = 0
+const val NOME_DATABASE = "Pregaverso.db"
 
 
 const val NOME_TABELLA_PLEBEI = "Plebei"
