@@ -29,5 +29,5 @@ const val COMMENTIMIRACOLI_COMMENTO = "Commento"
 // costanti della tabella Login
 const val NOME_TABELLA_LOGIN = "Login"
 const val LOGIN_NOME = "Nome"
-const val LOGIN_CASATADIOCESI = "Casata-Diocesi"
+const val LOGIN_CASATADIOCESI = "CasataDiocesi"
 const val LOGIN_PAROLADORDINE = "ParolaDOrdine"
