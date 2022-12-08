@@ -104,12 +104,24 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+
         db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_PLEBEI")
+        Log.d("ELIMINAZIONE TABELLA LOGIN","SUCCESSO")
+
         db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_SACERDOTI")
+        Log.d("ELIMINAZIONE TABELLA SACERDOTI","SUCCESSO")
+
         db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_MIRACOLI")
+        Log.d("ELIMINAZIONE TABELLA MIRACOLI","SUCCESSO")
+
         db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_COMMENTIMIRACOLI")
+        Log.d("ELIMINAZIONE TABELLA COMMENTIMIRACOLI","SUCCESSO")
+
         db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_LOGIN")
+        Log.d("ELIMINAZIONE TABELLA LOGIN","SUCCESSO")
+
         onCreate(db)
+        Log.d("CREAZIONE DATABASE","SUCCESSO")
     }
 
     fun prendiPlebei() : ArrayList<Plebeo>{
