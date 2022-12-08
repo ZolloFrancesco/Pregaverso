@@ -105,9 +105,22 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         onCreate(db)
     }
 
-
-
-
-
+    fun prendiPlebei() : ArrayList<Plebeo>{
+        val db : SQLiteDatabase = readableDatabase
+        val listaDaRestituire : ArrayList<Plebeo> = ArrayList()
+        val comando = "SELECT * FROM $NOME_TABELLA_PLEBEI"
+        val cursore : Cursor = db.rawQuery(comando,null)
+        if(cursore.moveToFirst()){
+            do {
+                val plebeoPrelevato = Plebeo()
+                plebeoPrelevato.nome = cursore.getString(0)
+                plebeoPrelevato.casata = cursore.getString(1)
+                plebeoPrelevato.baiocchi = cursore.getInt(2)
+                listaDaRestituire.add(plebeoPrelevato)
+            } while(cursore.moveToNext())
+        }
+        cursore.close()
+        return listaDaRestituire
+    }
 
 }
