@@ -282,6 +282,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         return true
     }
 
+    // svuota completamente tutte le tabelle del database. Utile nelle funzioni di Test.
     fun svuotaDatabase(){
 
         val db = writableDatabase
@@ -304,6 +305,9 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         Log.d("CREAZIONE DATABASE","SUCCESSO")
     }
 
+    // elimina un Sacerdote con nome nome e diocesi diocesi dal Database.
+    // restituisce false se gli input non sono validi, se non ha eliminato niente o se ha eliminato piu' di una riga.
+    // restituisce true in caso di eliminazione di un Sacerdote (non assicura la correttezza della scelta dell'eliminato).
     fun eliminaSacerdote(nome : String, diocesi : String): Boolean {
         if(nome == "" || diocesi == "") return false
 
