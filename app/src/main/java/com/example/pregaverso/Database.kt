@@ -181,6 +181,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
 
     // Restituisce la lista di tutti i Miracoli presenti al momento della chiamata all'interno del Database.
     // Se non ci sono Miracoli, restituisce una lista di Miracoli vuota.
+    // Lorenzo Borgia
     fun prendiMiracoli() : ArrayList<Miracolo> {
 
         val db : SQLiteDatabase = readableDatabase
