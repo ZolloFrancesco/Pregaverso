@@ -1,6 +1,6 @@
 package com.example.pregaverso
 
-const val VERSIONE_DATABASE = 1
+const val VERSIONE_DATABASE = 2
 const val NOME_DATABASE = "Pregaverso.db"
 
 // costanti della tabella Plebei
