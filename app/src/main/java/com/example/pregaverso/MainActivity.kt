@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
 
         val db = Database(this)
 
-
+        // Vediamo se ti spacco il branch
         db.aggiungiPlebeo("marco","imbecilli",30)
         db.aggiungiPlebeo("lorenzo","forti",100)
 
