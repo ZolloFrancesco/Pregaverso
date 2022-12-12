@@ -65,12 +65,12 @@ class DatabaseTest{
         val sacerdotiInseriti : ArrayList<Sacerdote> = ArrayList()
 
         for(i in 0 until 10){
-            db.aggiungiSacerdote("nome $i","diocesi $i")
+            //db.aggiungiSacerdote("nome $i","diocesi $i")
 
             val nuovoSacerdote = Sacerdote()
             nuovoSacerdote.nome = "nome $i"
             nuovoSacerdote.diocesi = "diocesi $i"
-            sacerotiInseriti.add(nuovoSacerdote)
+            sacerdotiInseriti.add(nuovoSacerdote)
         }
 
         val sacerdotiPresi = db.prendiSacerdoti()
@@ -134,7 +134,7 @@ class DatabaseTest{
         db.svuotaDatabase()
 
         for(i in 0 until 10){
-            db.aggiungiSacerdote("nome $i","diocesi $i")
+            //db.aggiungiSacerdote("nome $i","diocesi $i")
         }
 
         for(i in 0 until 10){
@@ -148,13 +148,12 @@ class DatabaseTest{
         assertFalse( db.eliminaSacerdote("nome", "") )
 
         for(i in 0 until 10){
-            db.aggiungiSacerdote("nome $i","diocesi $i")
+            //db.aggiungiSacerdote("nome $i","diocesi $i")
         }
 
         assertFalse( db.eliminaSacerdote("nome 11", "diocesi 2") )
 
         assertFalse( db.eliminaSacerdote("nome 2", "diocesi 11") )
     }
-
 
 }
