@@ -207,7 +207,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
 
         modificato.put(PLEBEI_NOME,nomePlebeo)
         modificato.put(PLEBEI_CASATA,casata)
-        modificato.put(PLEBEI_NOME,baiocchiVecchi + nBaiocchi)
+        modificato.put(PLEBEI_BAIOCCHI,baiocchiVecchi + nBaiocchi)
 
         val nModificati = db.update(NOME_TABELLA_PLEBEI, modificato, "$PLEBEI_NOME=? AND $PLEBEI_CASATA=?", arrayOf(nomePlebeo,casata))
 
