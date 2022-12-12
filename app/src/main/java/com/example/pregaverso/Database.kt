@@ -91,7 +91,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         db?.execSQL(comando)
         Log.d("CREATA TABELLA SACERDOTI","SUCCESSO")
 
-        comando = "CREATE TABLE $NOME_TABELLA_MIRACOLI ($MIRACOLI_DESCRIZIONE TEXT, $MIRACOLI_NOMESANTO TEXT ,  $MIRACOLI_COSTO INTEGER, PRIMARY KEY($MIRACOLI_DESCRIZIONE,$MIRACOLI_NOMESANTO))"
+        comando = "CREATE TABLE $NOME_TABELLA_MIRACOLI ($MIRACOLI_DESCRIZIONE TEXT, $MIRACOLI_NOMESANTO TEXT, $MIRACOLI_COSTO INTEGER, PRIMARY KEY($MIRACOLI_DESCRIZIONE,$MIRACOLI_NOMESANTO))"
         db?.execSQL(comando)
         Log.d("CREATA TABELLA MIRACOLI","SUCCESSO")
 
@@ -180,6 +180,36 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         return listaDaRestituire
     }
 
+    // Restituisce la lista di tutti i Miracoli presenti al momento della chiamata all'interno del Database.
+    // Se non ci sono Miracoli, restituisce una lista di Miracoli vuota.
+    // Lorenzo Borgia
+    fun prendiMiracoli() : ArrayList<Miracolo> {
+
+        val db : SQLiteDatabase = readableDatabase
+
+        val listaDaRestituire : ArrayList<Miracolo> = ArrayList()
+
+        val comando = "SELECT * FROM $NOME_TABELLA_MIRACOLI"
+        val cursore : Cursor = db.rawQuery(comando, null)
+
+        if (cursore.moveToFirst()) {
+            do {
+                val miracoloPrelevato = Miracolo()
+
+                miracoloPrelevato.descr = cursore.getString(0)
+                miracoloPrelevato.nomeSanto = cursore.getString(1)
+                miracoloPrelevato.costo = cursore.getInt(2)
+
+                listaDaRestituire.add(miracoloPrelevato)
+
+            } while (cursore.moveToNext())
+        }
+
+        cursore.close()
+
+        return listaDaRestituire
+    }
+
     // aggiunge nBaiocchi al Plebeo univocamente identificato dalla coppia {nomePlebeo,casata} all'interno del Database.
     // restituisce false se non ha modificato nessun Plebeo, se ha modificato troppi Plebei o se c'e' stato un errore sconosciuto.
     // restituisce true in caso di corretta modifica.
@@ -255,6 +285,55 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         }
 
         Log.d("INSERIMENTO DI $nome DI CASA $casata","SUCCESSO")
+        return true
+    }
+
+    // Inserisce un nuovo utente (Plebeo o Sacerdote) con nome, casata/diocesi e Parola d'ordine.
+    // Restituisce FALSE se l'input è vuoto oppure già presente
+    // Restituisce TRUE in caso di corretto inserimento
+    // Lorenzo Borgia
+    fun aggiungiCredenziali(nome : String, casataDiocesi : String, parolaDOrdine : String) : Boolean {
+
+        val nomeUtente = nome.trim()
+        val casataDiocesiUtente = casataDiocesi.trim()
+
+        if (nomeUtente.isEmpty() || casataDiocesiUtente.isEmpty()) {
+
+            Log.d("INSERIMENTO DI $nome DI CASA $casataDiocesi","NOME E CASATA/DIOCESI VUOTI")
+            return false
+        }
+
+        val listaPlebeo = prendiPlebei()
+        val listaSacerdote = prendiSacerdoti()
+
+        for (contatore in 0 until listaPlebeo.size) {
+
+            if (listaPlebeo[contatore].nome == nomeUtente && listaPlebeo[contatore].casata == casataDiocesiUtente) {
+
+                Log.d("INSERIMENTO DI $nome DI CASA $casataDiocesi","NOME E CASATA GIA' PRESENTI")
+                return false
+            }
+        }
+
+        for (contatore in 0 until listaSacerdote.size) {
+
+            if (listaSacerdote[contatore].nome == nomeUtente && listaSacerdote[contatore].diocesi == casataDiocesiUtente) {
+
+                Log.d("INSERIMENTO DI $nome DI DIOCESI $casataDiocesi","NOME E DIOCESI GIA' PRESENTI")
+                return false
+            }
+        }
+
+        val db = writableDatabase
+
+        val daAggiungere = ContentValues()
+        daAggiungere.put(LOGIN_NOME, nomeUtente)
+        daAggiungere.put(LOGIN_CASATADIOCESI, casataDiocesiUtente)
+        daAggiungere.put(LOGIN_PAROLADORDINE, parolaDOrdine)
+
+        db?.insert(NOME_TABELLA_LOGIN, null, daAggiungere)
+
+        Log.d("INSERIMENTO DI $nome DI CASA/DIOCESI $casataDiocesi E PAROLA D'ORDINE $parolaDOrdine","SUCCESSO")
         return true
     }
 
