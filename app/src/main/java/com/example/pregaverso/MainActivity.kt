@@ -11,8 +11,6 @@ class MainActivity : AppCompatActivity() {
 
         val db = Database(this)
 
-        //Primo commento di prova per branch Lorenzo Borgia
-
         db.aggiungiPlebeo("marco","imbecilli",30)
         db.aggiungiPlebeo("lorenzo","forti",100)
 

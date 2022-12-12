@@ -80,6 +80,7 @@ import android.util.Log
 
 class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, null, VERSIONE_DATABASE){
 
+
     override fun onCreate(db: SQLiteDatabase?) {
 
         var comando = "CREATE TABLE $NOME_TABELLA_PLEBEI ($PLEBEI_NOME TEXT , $PLEBEI_CASATA TEXT ,  $PLEBEI_BAIOCCHI INTEGER, PRIMARY KEY($PLEBEI_NOME,$PLEBEI_CASATA))"
@@ -357,6 +358,53 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         }
 
         Log.d("ELIMINO $nome DI CASA $casata","SUCCESSO")
+        return true
+    }
+
+    // svuota completamente tutte le tabelle del database. Utile nelle funzioni di Test.
+    fun svuotaDatabase(){
+
+        val db = writableDatabase
+        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_PLEBEI")
+        Log.d("ELIMINAZIONE TABELLA LOGIN","SUCCESSO")
+
+        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_SACERDOTI")
+        Log.d("ELIMINAZIONE TABELLA SACERDOTI","SUCCESSO")
+
+        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_MIRACOLI")
+        Log.d("ELIMINAZIONE TABELLA MIRACOLI","SUCCESSO")
+
+        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_COMMENTIMIRACOLI")
+        Log.d("ELIMINAZIONE TABELLA COMMENTIMIRACOLI","SUCCESSO")
+
+        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_LOGIN")
+        Log.d("ELIMINAZIONE TABELLA LOGIN","SUCCESSO")
+
+        onCreate(db)
+        Log.d("CREAZIONE DATABASE","SUCCESSO")
+    }
+
+    // elimina un Sacerdote con nome nome e diocesi diocesi dal Database.
+    // restituisce false se gli input non sono validi, se non ha eliminato niente o se ha eliminato piu' di una riga.
+    // restituisce true in caso di eliminazione di un Sacerdote (non assicura la correttezza della scelta dell'eliminato).
+    fun eliminaSacerdote(nome : String, diocesi : String): Boolean {
+        if(nome == "" || diocesi == "") return false
+
+        val db = writableDatabase
+
+        val nRigheEliminate = db.delete(NOME_TABELLA_SACERDOTI,"$SACERDOTI_NOME=? AND $SACERDOTI_DIOCESI=?", arrayOf(nome,diocesi))
+
+        if(nRigheEliminate == 0){
+            Log.d("ELIMINO $nome SACERDOTE DI $diocesi","NESSUN SACERDOTE ELIMINATO")
+            return false
+        }
+
+        if(nRigheEliminate>1){
+            Log.d("ELIMINO $nome SACERDOTE DI $diocesi","ELIMINATE PIU' PLEBEI!")
+            return false
+        }
+
+        Log.d("ELIMINO $nome SACERDOTE DI $diocesi","SUCCESSO")
         return true
     }
 
