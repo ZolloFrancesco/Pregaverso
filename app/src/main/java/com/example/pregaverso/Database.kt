@@ -282,4 +282,47 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         return true
     }
 
+    fun svuotaDatabase(){
+
+        val db = writableDatabase
+        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_PLEBEI")
+        Log.d("ELIMINAZIONE TABELLA LOGIN","SUCCESSO")
+
+        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_SACERDOTI")
+        Log.d("ELIMINAZIONE TABELLA SACERDOTI","SUCCESSO")
+
+        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_MIRACOLI")
+        Log.d("ELIMINAZIONE TABELLA MIRACOLI","SUCCESSO")
+
+        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_COMMENTIMIRACOLI")
+        Log.d("ELIMINAZIONE TABELLA COMMENTIMIRACOLI","SUCCESSO")
+
+        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_LOGIN")
+        Log.d("ELIMINAZIONE TABELLA LOGIN","SUCCESSO")
+
+        onCreate(db)
+        Log.d("CREAZIONE DATABASE","SUCCESSO")
+    }
+
+    fun eliminaSacerdote(nome : String, diocesi : String): Boolean {
+        if(nome == "" || diocesi == "") return false
+
+        val db = writableDatabase
+
+        val nRigheEliminate = db.delete(NOME_TABELLA_SACERDOTI,"$SACERDOTI_NOME=? AND $SACERDOTI_DIOCESI=?", arrayOf(nome,diocesi))
+
+        if(nRigheEliminate == 0){
+            Log.d("ELIMINO $nome SACERDOTE DI $diocesi","NESSUN SACERDOTE ELIMINATO")
+            return false
+        }
+
+        if(nRigheEliminate>1){
+            Log.d("ELIMINO $nome SACERDOTE DI $diocesi","ELIMINATE PIU' PLEBEI!")
+            return false
+        }
+
+        Log.d("ELIMINO $nome SACERDOTE DI $diocesi","SUCCESSO")
+        return true
+    }
+
 }
