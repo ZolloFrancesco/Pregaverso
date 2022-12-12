@@ -246,7 +246,12 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         daAggiungere.put(PLEBEI_CASATA,casata)
         daAggiungere.put(PLEBEI_BAIOCCHI,nBaiocchi)
 
-        db?.insert(NOME_TABELLA_PLEBEI, null, daAggiungere)
+        val test = db?.insert(NOME_TABELLA_PLEBEI, null, daAggiungere)
+
+        if(test?.toInt() == -1){
+            Log.d("INSERIMENTO DI $nome DI CASA $casata","FALLITO")
+            return false
+        }
 
         Log.d("INSERIMENTO DI $nome DI CASA $casata","SUCCESSO")
         return true
