@@ -1,11 +1,17 @@
 package com.example.pregaverso
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Assert.*
+import org.junit.Before
 import org.junit.Test
 
 class DatabaseTest{
 
     val db = Database(InstrumentationRegistry.getInstrumentation().targetContext)
+
+    @Before
+    fun qualsiasi(){
+
+    }
 
     @Test
     fun testAggiungiPlebeo(){
