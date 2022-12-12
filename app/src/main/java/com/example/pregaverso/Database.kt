@@ -80,6 +80,7 @@ import android.util.Log
 
 class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, null, VERSIONE_DATABASE){
 
+
     override fun onCreate(db: SQLiteDatabase?) {
 
         var comando = "CREATE TABLE $NOME_TABELLA_PLEBEI ($PLEBEI_NOME TEXT , $PLEBEI_CASATA TEXT ,  $PLEBEI_BAIOCCHI INTEGER, PRIMARY KEY($PLEBEI_NOME,$PLEBEI_CASATA))"
