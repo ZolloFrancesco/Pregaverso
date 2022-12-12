@@ -179,6 +179,35 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         return listaDaRestituire
     }
 
+    // Restituisce la lista di tutti i Miracoli presenti al momento della chiamata all'interno del Database.
+    // Se non ci sono Miracoli, restituisce una lista di Miracoli vuota.
+    fun prendiMiracoli() : ArrayList<Miracolo> {
+
+        val db : SQLiteDatabase = readableDatabase
+
+        val listaDaRestituire : ArrayList<Miracolo> = ArrayList()
+
+        val comando = "SELECT * FROM $NOME_TABELLA_MIRACOLI"
+        val cursore : Cursor = db.rawQuery(comando, null)
+
+        if (cursore.moveToFirst()) {
+            do {
+                val miracoloPrelevato = Miracolo()
+
+                miracoloPrelevato.descr = cursore.getString(0)
+                miracoloPrelevato.nomeSanto = cursore.getString(1)
+                miracoloPrelevato.costo = cursore.getInt(2)
+
+                listaDaRestituire.add(miracoloPrelevato)
+
+            } while (cursore.moveToNext())
+        }
+
+        cursore.close()
+
+        return listaDaRestituire
+    }
+
     // aggiunge nBaiocchi al Plebeo univocamente identificato dalla coppia {nomePlebeo,casata} all'interno del Database.
     // restituisce false se non ha modificato nessun Plebeo, se ha modificato troppi Plebei o se c'e' stato un errore sconosciuto.
     // restituisce true in caso di corretta modifica.
