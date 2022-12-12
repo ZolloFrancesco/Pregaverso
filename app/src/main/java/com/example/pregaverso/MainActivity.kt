@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
 
         val db = Database(this)
 
-
+        // Commento di prova branch Filippo_Farnesi
         db.aggiungiPlebeo("marco","imbecilli",30)
         db.aggiungiPlebeo("lorenzo","forti",100)
 
