@@ -309,5 +309,24 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         return listaDaRestituire
     }
 
+    // verifica se un utente specifico è presente nel database
+    // in caso di riscontro positivo restituisce true, altrimenti false
+    fun testUtente(nome: String, casataDiocesi: String, parolaDOrdine: String) : Boolean{
+
+        val db = readableDatabase
+        val cur = db.rawQuery("SELECT * FROM $NOME_TABELLA_LOGIN", null)
+        if (cur.moveToFirst()){
+
+            do {
+
+                if (cur.getString(0).equals(nome) && cur.getString(1).equals(casataDiocesi) && cur.getString(2).equals(parolaDOrdine)) {
+                    return true
+                }
+
+            } while (cur.moveToNext())
+
+        }
+        return false
+    }
 
 }
