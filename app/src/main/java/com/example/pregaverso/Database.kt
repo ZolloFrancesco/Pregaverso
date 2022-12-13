@@ -410,7 +410,6 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         return false
     }
 
-}
 
     // svuota completamente tutte le tabelle del database. Utile nelle funzioni di Test.
     fun svuotaDatabase(){
@@ -472,3 +471,4 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         return true
     }
 }
+
