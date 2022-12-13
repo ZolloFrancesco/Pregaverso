@@ -281,4 +281,33 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         return true
     }
 
+    // restituisce una lista contenente tutti i commenti di un miracolo specifico
+    // in caso non ci siano commenti restituisce una lista vuota
+    fun prendiCommento(descr: String, nomeSanto: String) : ArrayList<String>{
+
+        val db = readableDatabase
+        val commenti : ArrayList<Commento> = ArrayList()
+        val cur = db.rawQuery("SELECT * FROM $NOME_TABELLA_COMMENTIMIRACOLI", null)
+        if (cur.moveToFirst()){
+            do{
+                val commentoNuovo = Commento()
+                commentoNuovo.descrMiracolo = cur.getString(0)
+                commentoNuovo.nomeSanto = cur.getString(1)
+                commentoNuovo.commento = cur.getString(2)
+                commenti.add(commentoNuovo)
+            } while(cur.moveToNext())
+        }
+
+        val listaDaRestituire : ArrayList<String> = ArrayList()
+
+        for (i in 0 until commenti.size){
+            if(commenti[i].descrMiracolo.equals(descr) && commenti[i].nomeSanto.equals(nomeSanto)){
+                listaDaRestituire.add(commenti[i].commento)
+            }
+        }
+
+        return listaDaRestituire
+    }
+
+
 }
