@@ -407,5 +407,17 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         Log.d("ELIMINO $nome SACERDOTE DI $diocesi","SUCCESSO")
         return true
     }
-
+    fun aggiungiMiracoli(descr: String, nomesanto: String, costo: Int): Boolean {
+        if(costo < 0 || descr == "" || nomesanto == ""){
+            Log.d("Inserimento Miracoli","INPUT NON VALIDI")
+            return false
+        }
+        val db = writableDatabase
+        val daAggiungere = ContentValues()
+        daAggiungere.put(MIRACOLI_DESCRIZIONE, descr)
+        daAggiungere.put(MIRACOLI_NOMESANTO, nomesanto)
+        daAggiungere.put(MIRACOLI_COSTO, costo)
+        db?.insert(NOME_TABELLA_MIRACOLI,null,daAggiungere)
+        return true
+    }
 }
