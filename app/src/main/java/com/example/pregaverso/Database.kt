@@ -80,6 +80,7 @@ import android.util.Log
 
 class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, null, VERSIONE_DATABASE){
 
+
     override fun onCreate(db: SQLiteDatabase?) {
 
         var comando = "CREATE TABLE $NOME_TABELLA_PLEBEI ($PLEBEI_NOME TEXT , $PLEBEI_CASATA TEXT ,  $PLEBEI_BAIOCCHI INTEGER, PRIMARY KEY($PLEBEI_NOME,$PLEBEI_CASATA))"
@@ -90,7 +91,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         db?.execSQL(comando)
         Log.d("CREATA TABELLA SACERDOTI","SUCCESSO")
 
-        comando = "CREATE TABLE $NOME_TABELLA_MIRACOLI ($MIRACOLI_DESCRIZIONE TEXT, $MIRACOLI_NOMESANTO TEXT ,  $MIRACOLI_COSTO INTEGER, PRIMARY KEY($MIRACOLI_DESCRIZIONE,$MIRACOLI_NOMESANTO))"
+        comando = "CREATE TABLE $NOME_TABELLA_MIRACOLI ($MIRACOLI_DESCRIZIONE TEXT, $MIRACOLI_NOMESANTO TEXT, $MIRACOLI_COSTO INTEGER, PRIMARY KEY($MIRACOLI_DESCRIZIONE,$MIRACOLI_NOMESANTO))"
         db?.execSQL(comando)
         Log.d("CREATA TABELLA MIRACOLI","SUCCESSO")
 
@@ -179,6 +180,36 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         return listaDaRestituire
     }
 
+    // Restituisce la lista di tutti i Miracoli presenti al momento della chiamata all'interno del Database.
+    // Se non ci sono Miracoli, restituisce una lista di Miracoli vuota.
+    // Lorenzo Borgia
+    fun prendiMiracoli() : ArrayList<Miracolo> {
+
+        val db : SQLiteDatabase = readableDatabase
+
+        val listaDaRestituire : ArrayList<Miracolo> = ArrayList()
+
+        val comando = "SELECT * FROM $NOME_TABELLA_MIRACOLI"
+        val cursore : Cursor = db.rawQuery(comando, null)
+
+        if (cursore.moveToFirst()) {
+            do {
+                val miracoloPrelevato = Miracolo()
+
+                miracoloPrelevato.descr = cursore.getString(0)
+                miracoloPrelevato.nomeSanto = cursore.getString(1)
+                miracoloPrelevato.costo = cursore.getInt(2)
+
+                listaDaRestituire.add(miracoloPrelevato)
+
+            } while (cursore.moveToNext())
+        }
+
+        cursore.close()
+
+        return listaDaRestituire
+    }
+
     // aggiunge nBaiocchi al Plebeo univocamente identificato dalla coppia {nomePlebeo,casata} all'interno del Database.
     // restituisce false se non ha modificato nessun Plebeo, se ha modificato troppi Plebei o se c'e' stato un errore sconosciuto.
     // restituisce true in caso di corretta modifica.
@@ -257,6 +288,55 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         return true
     }
 
+    // Inserisce un nuovo utente (Plebeo o Sacerdote) con nome, casata/diocesi e Parola d'ordine.
+    // Restituisce FALSE se l'input è vuoto oppure già presente
+    // Restituisce TRUE in caso di corretto inserimento
+    // Lorenzo Borgia
+    fun aggiungiCredenziali(nome : String, casataDiocesi : String, parolaDOrdine : String) : Boolean {
+
+        val nomeUtente = nome.trim()
+        val casataDiocesiUtente = casataDiocesi.trim()
+
+        if (nomeUtente.isEmpty() || casataDiocesiUtente.isEmpty()) {
+
+            Log.d("INSERIMENTO DI $nome DI CASA $casataDiocesi","NOME E CASATA/DIOCESI VUOTI")
+            return false
+        }
+
+        val listaPlebeo = prendiPlebei()
+        val listaSacerdote = prendiSacerdoti()
+
+        for (contatore in 0 until listaPlebeo.size) {
+
+            if (listaPlebeo[contatore].nome == nomeUtente && listaPlebeo[contatore].casata == casataDiocesiUtente) {
+
+                Log.d("INSERIMENTO DI $nome DI CASA $casataDiocesi","NOME E CASATA GIA' PRESENTI")
+                return false
+            }
+        }
+
+        for (contatore in 0 until listaSacerdote.size) {
+
+            if (listaSacerdote[contatore].nome == nomeUtente && listaSacerdote[contatore].diocesi == casataDiocesiUtente) {
+
+                Log.d("INSERIMENTO DI $nome DI DIOCESI $casataDiocesi","NOME E DIOCESI GIA' PRESENTI")
+                return false
+            }
+        }
+
+        val db = writableDatabase
+
+        val daAggiungere = ContentValues()
+        daAggiungere.put(LOGIN_NOME, nomeUtente)
+        daAggiungere.put(LOGIN_CASATADIOCESI, casataDiocesiUtente)
+        daAggiungere.put(LOGIN_PAROLADORDINE, parolaDOrdine)
+
+        db?.insert(NOME_TABELLA_LOGIN, null, daAggiungere)
+
+        Log.d("INSERIMENTO DI $nome DI CASA/DIOCESI $casataDiocesi E PAROLA D'ORDINE $parolaDOrdine","SUCCESSO")
+        return true
+    }
+
     // elimina un Plebeo con nome nome e casata casata dal Database.
     // restituisce false se gli input non sono validi, se non ha eliminato niente o se ha eliminato piu' di una riga.
     // restituisce true in caso di eliminazione di un Plebeo (non assicura la correttezza della scelta dell'eliminato).
@@ -280,6 +360,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         Log.d("ELIMINO $nome DI CASA $casata","SUCCESSO")
         return true
     }
+
 
     // restituisce una lista contenente tutti i commenti di un miracolo specifico
     // in caso non ci siano commenti restituisce una lista vuota
@@ -329,4 +410,65 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         return false
     }
 
+}
+
+    // svuota completamente tutte le tabelle del database. Utile nelle funzioni di Test.
+    fun svuotaDatabase(){
+
+        val db = writableDatabase
+        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_PLEBEI")
+        Log.d("ELIMINAZIONE TABELLA LOGIN","SUCCESSO")
+
+        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_SACERDOTI")
+        Log.d("ELIMINAZIONE TABELLA SACERDOTI","SUCCESSO")
+
+        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_MIRACOLI")
+        Log.d("ELIMINAZIONE TABELLA MIRACOLI","SUCCESSO")
+
+        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_COMMENTIMIRACOLI")
+        Log.d("ELIMINAZIONE TABELLA COMMENTIMIRACOLI","SUCCESSO")
+
+        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_LOGIN")
+        Log.d("ELIMINAZIONE TABELLA LOGIN","SUCCESSO")
+
+        onCreate(db)
+        Log.d("CREAZIONE DATABASE","SUCCESSO")
+    }
+
+    // elimina un Sacerdote con nome nome e diocesi diocesi dal Database.
+    // restituisce false se gli input non sono validi, se non ha eliminato niente o se ha eliminato piu' di una riga.
+    // restituisce true in caso di eliminazione di un Sacerdote (non assicura la correttezza della scelta dell'eliminato).
+    fun eliminaSacerdote(nome : String, diocesi : String): Boolean {
+        if(nome == "" || diocesi == "") return false
+
+        val db = writableDatabase
+
+        val nRigheEliminate = db.delete(NOME_TABELLA_SACERDOTI,"$SACERDOTI_NOME=? AND $SACERDOTI_DIOCESI=?", arrayOf(nome,diocesi))
+
+        if(nRigheEliminate == 0){
+            Log.d("ELIMINO $nome SACERDOTE DI $diocesi","NESSUN SACERDOTE ELIMINATO")
+            return false
+        }
+
+        if(nRigheEliminate>1){
+            Log.d("ELIMINO $nome SACERDOTE DI $diocesi","ELIMINATE PIU' PLEBEI!")
+            return false
+        }
+
+        Log.d("ELIMINO $nome SACERDOTE DI $diocesi","SUCCESSO")
+        return true
+    }
+    fun aggiungiMiracoli(descr: String, nomesanto: String, costo: Int): Boolean {
+        if(costo < 0 || descr == "" || nomesanto == ""){
+            Log.d("Inserimento Miracoli","INPUT NON VALIDI")
+            return false
+        }
+        val db = writableDatabase
+        val daAggiungere = ContentValues()
+        daAggiungere.put(MIRACOLI_DESCRIZIONE, descr)
+        daAggiungere.put(MIRACOLI_NOMESANTO, nomesanto)
+        daAggiungere.put(MIRACOLI_COSTO, costo)
+        db?.insert(NOME_TABELLA_MIRACOLI,null,daAggiungere)
+        return true
+    }
 }
