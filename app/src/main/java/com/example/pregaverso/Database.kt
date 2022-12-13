@@ -445,4 +445,20 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         return true
     }
 
+    //
+    //
+    // Lorenzo Borgia
+    fun eliminaMiracolo (descr: String, nomeSanto : String) : Boolean {
+
+        if (descr == "" || nomeSanto == "") {
+
+            Log.d("FALLIMENTO","NESSUN SACERDOTE ELIMINATO, DESCRIZIONE O NOME SANTO VUOTE")
+            return false
+        }
+
+        val db = writableDatabase
+
+        return true
+    }
+
 }
