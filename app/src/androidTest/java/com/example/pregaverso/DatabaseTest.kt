@@ -70,7 +70,7 @@ class DatabaseTest{
             val nuovoSacerdote = Sacerdote()
             nuovoSacerdote.nome = "nome $i"
             nuovoSacerdote.diocesi = "diocesi $i"
-            sacerotiInseriti.add(nuovoSacerdote)
+            sacerdotiInseriti.add(nuovoSacerdote)
         }
 
         val sacerdotiPresi = db.prendiSacerdoti()
