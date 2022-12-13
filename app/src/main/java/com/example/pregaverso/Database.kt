@@ -289,17 +289,17 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
     }
 
     // Inserisce un nuovo utente (Plebeo o Sacerdote) con nome, casata/diocesi e Parola d'ordine.
-    // Restituisce FALSE se l'input è vuoto oppure già presente
-    // Restituisce TRUE in caso di corretto inserimento
+    // Restituisce FALSE se l'input è vuoto oppure già presente.
+    // Restituisce TRUE in caso di corretto inserimento.
     // Lorenzo Borgia
-    fun aggiungiCredenziali(nome : String, casataDiocesi : String, parolaDOrdine : String) : Boolean {
+    fun aggiungiCredenziali (nome : String, casataDiocesi : String, parolaDOrdine : String) : Boolean {
 
         val nomeUtente = nome.trim()
         val casataDiocesiUtente = casataDiocesi.trim()
 
         if (nomeUtente.isEmpty() || casataDiocesiUtente.isEmpty()) {
 
-            Log.d("INSERIMENTO DI $nome DI CASA $casataDiocesi","NOME E CASATA/DIOCESI VUOTI")
+            Log.d("INSERIMENTO DI $nomeUtente DI CASA $casataDiocesiUtente","NOME E CASATA/DIOCESI VUOTI")
             return false
         }
 
@@ -310,7 +310,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
 
             if (listaPlebeo[contatore].nome == nomeUtente && listaPlebeo[contatore].casata == casataDiocesiUtente) {
 
-                Log.d("INSERIMENTO DI $nome DI CASA $casataDiocesi","NOME E CASATA GIA' PRESENTI")
+                Log.d("INSERIMENTO DI $nomeUtente DI CASA $casataDiocesiUtente","NOME E CASATA GIA' PRESENTI")
                 return false
             }
         }
@@ -319,7 +319,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
 
             if (listaSacerdote[contatore].nome == nomeUtente && listaSacerdote[contatore].diocesi == casataDiocesiUtente) {
 
-                Log.d("INSERIMENTO DI $nome DI DIOCESI $casataDiocesi","NOME E DIOCESI GIA' PRESENTI")
+                Log.d("INSERIMENTO DI $nomeUtente DI DIOCESI $casataDiocesiUtente","NOME E DIOCESI GIA' PRESENTI")
                 return false
             }
         }
@@ -333,8 +333,45 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
 
         db?.insert(NOME_TABELLA_LOGIN, null, daAggiungere)
 
-        Log.d("INSERIMENTO DI $nome DI CASA/DIOCESI $casataDiocesi E PAROLA D'ORDINE $parolaDOrdine","SUCCESSO")
+        Log.d("INSERIMENTO DI $nomeUtente DI CASA/DIOCESI $casataDiocesiUtente E PAROLA D'ORDINE $parolaDOrdine","SUCCESSO")
         return true
+    }
+
+    // Inserisce un nuovo commento ad un miracolo con descrizione miracolo, santo del miracolo ed il commento testuale.
+    // Restituisce FALSE se l'input del commento è vuoto o in caso di errore generico sull'inserimento.
+    // Restituisce TRUE in caso di corretto inserimento.
+    // Lorenzo Borgia
+    fun aggiungiCommento (descrMiracolo: String, santoMiracolo : String, commento : String) : Boolean {
+
+        val db = writableDatabase
+        val commentoMiracolo = commento.trim()
+
+        if (commentoMiracolo.isEmpty()) {
+
+            Log.d("FALLIMENTO","INSERIMENTO DI $commentoMiracolo SU MIRACOLO $descrMiracolo DI $santoMiracolo, COMMENTO MIRACOLO VUOTO")
+            return false
+        }
+
+        val listaMiracoli = prendiMiracoli()
+
+        for (contatore in 0 until listaMiracoli.size) {
+
+            if (listaMiracoli[contatore].descr == descrMiracolo && listaMiracoli[contatore].nomeSanto == santoMiracolo) {
+
+                val daAggiungere = ContentValues()
+                daAggiungere.put(COMMENTIMIRACOLI_DESCRIZIONE, descrMiracolo)
+                daAggiungere.put(COMMENTIMIRACOLI_NOMESANTO, santoMiracolo)
+                daAggiungere.put(COMMENTIMIRACOLI_COMMENTO, commentoMiracolo)
+
+                db?.insert(NOME_TABELLA_COMMENTIMIRACOLI, null, daAggiungere)
+
+                Log.d("SUCCESSO","INSERIMENTO DI $commentoMiracolo SU MIRACOLO $descrMiracolo DI $santoMiracolo")
+                return true
+            }
+        }
+
+        Log.d("FALLIMENTO","INSERIMENTO DI $commentoMiracolo SU MIRACOLO $descrMiracolo DI $santoMiracolo")
+        return false
     }
 
     // elimina un Plebeo con nome nome e casata casata dal Database.
@@ -457,6 +494,24 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         Log.d("ELIMINO $nome SACERDOTE DI $diocesi","SUCCESSO")
         return true
     }
+
+
+    //
+    //
+    // Lorenzo Borgia
+    fun eliminaMiracolo (descr: String, nomeSanto : String) : Boolean {
+
+        if (descr == "" || nomeSanto == "") {
+
+            Log.d("FALLIMENTO","NESSUN SACERDOTE ELIMINATO, DESCRIZIONE O NOME SANTO VUOTE")
+            return false
+        }
+
+        val db = writableDatabase
+
+        return true
+    }
+
     fun aggiungiMiracoli(descr: String, nomesanto: String, costo: Int): Boolean {
         if(costo < 0 || descr == "" || nomesanto == ""){
             Log.d("Inserimento Miracoli","INPUT NON VALIDI")
@@ -470,5 +525,6 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         db?.insert(NOME_TABELLA_MIRACOLI,null,daAggiungere)
         return true
     }
+
 }
 
