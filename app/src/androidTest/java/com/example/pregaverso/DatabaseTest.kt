@@ -163,7 +163,7 @@ class DatabaseTest{
         db.svuotaDatabase()
 
         for(i in 0 until 10){
-            db.aggiungiMiracolo("descrizione $i","San Francesco",1000)
+            db.aggiungiMiracoli("descrizione $i","San Francesco",1000)
         }
 
         for(i in 0 until 10){
