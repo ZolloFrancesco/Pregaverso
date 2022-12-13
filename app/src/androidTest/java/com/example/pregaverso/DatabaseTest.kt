@@ -173,7 +173,7 @@ class DatabaseTest{
         }
 
         for(i in 0 until 10){
-            val commenti = db.prendiCommenti("descrizione $i","San Francesco")
+            val commenti = db.prendiCommento("descrizione $i","San Francesco")
 
             for(j in 0 until commenti.size){
                 assertTrue(commenti[i].equals("commento $j"))
