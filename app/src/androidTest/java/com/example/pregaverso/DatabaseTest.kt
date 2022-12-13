@@ -156,5 +156,51 @@ class DatabaseTest{
         assertFalse( db.eliminaSacerdote("nome 2", "diocesi 11") )
     }
 
+    // descr : String, santo : String, commento : String
+    @Test
+    fun testAggiungiCommento(){
+
+        db.svuotaDatabase()
+
+        for(i in 0 until 10){
+            db.aggiungiMiracolo("descrizione $i","San Francesco",1000)
+        }
+
+        for(i in 0 until 10){
+            for(j in 0 until 5){
+                assertTrue( db.aggiungiCommento("descrizione $i","San Francesco","commento $j") )
+            }
+        }
+
+        for(i in 0 until 10){
+            val commenti = db.prendiCommenti("descrizione $i","San Francesco")
+
+            for(j in 0 until commenti.size){
+                assertTrue(commenti[i].equals("commento $j"))
+            }
+        }
+
+        assertFalse( db.aggiungiCommento("descrizione 0","non esistente","commento"))
+
+        assertFalse( db.aggiungiCommento("non esistente","San Francesco","commento"))
+
+        assertFalse( db.aggiungiCommento("descrizione 0","SanFrancesco",""))
+
+        assertFalse( db.aggiungiCommento("","",""))
+
+        db.svuotaDatabase()
+
+        assertFalse( db.aggiungiCommento("non esistente","non esistente","commento"))
+
+        assertFalse( db.aggiungiCommento("","non esistente","commento"))
+
+        assertFalse( db.aggiungiCommento("non esistente","","commento"))
+
+        assertFalse( db.aggiungiCommento("non esistente","non esistente",""))
+
+        assertFalse( db.aggiungiCommento("","",""))
+
+    }
+
 
 }
