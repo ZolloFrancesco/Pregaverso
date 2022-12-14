@@ -30,10 +30,20 @@ class MainActivity : AppCompatActivity() {
         testi.add("ogni volto un assassino")
         testi.add("ogni malattia una morte")
 
-        val x = db.prendiPlebei()
+        for(i in 0 until testi.size){
+            testoStoria.postDelayed({
+                testoStoria.startAnimation(fadeIn)
+                if(i == 1) testoStoria.visibility = VISIBLE
+                if(i != 0) testoStoria.text = testi[i]
+                                    } , tempoInizio)
 
-        Log.d("QUALCOSA","${x[0].nome} ${x[0].casata} ${x[0].baiocchi}")
-        Log.d("QUALCOSA","${x[1].nome} ${x[1].casata} ${x[1].baiocchi}")
+            tempoInizio += 2000
+            testoStoria.postDelayed({
+                testoStoria.startAnimation(fadeOut)
+            } , tempoInizio)
+
+            tempoInizio += 4000
+        }
 
     }
 }
