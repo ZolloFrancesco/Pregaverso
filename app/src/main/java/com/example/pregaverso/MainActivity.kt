@@ -1,12 +1,11 @@
 package com.example.pregaverso
 
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.delay
 
 class MainActivity : AppCompatActivity() {
 
