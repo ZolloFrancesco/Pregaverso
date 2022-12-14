@@ -48,6 +48,5 @@ class MainActivity : AppCompatActivity() {
 
             tempoInizio += 4000
         }
-
     }
 }
