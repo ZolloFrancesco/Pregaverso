@@ -10,12 +10,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/bottoneprincipale"
-         />
+        <ImageButton
+            android:id="@+id/bottonePrincipale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/bottoneprincipale"
+            android:clickable="false"
+            android:focusable="true" />
 
     <TextView
         android:layout_width="match_parent"
@@ -27,17 +29,18 @@
         android:textSize="15sp"
         />
 
-    <androidx.core.widget.ContentLoadingProgressBar
-        android:layout_width="match_parent"
-        android:animationResolution="5"
-        android:layout_height="match_parent"
-        android:max="100"
-        android:progress="0"
-        android:layout_gravity="bottom"
-        android:progressDrawable="@android:drawable/progress_horizontal"
-        android:progressTint="#3CC54A">
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/barraCaricamento"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:animationResolution="5"
+            android:max="100"
+            android:progress="0"
+            android:progressDrawable="@android:drawable/progress_horizontal"
+            android:progressTint="#3CC54A">
 
-    </androidx.core.widget.ContentLoadingProgressBar>
+        </androidx.core.widget.ContentLoadingProgressBar>
 
     </LinearLayout>
 
