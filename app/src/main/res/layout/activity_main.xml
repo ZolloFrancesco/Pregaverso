@@ -16,10 +16,12 @@
         android:id="@+id/testoStoria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
         android:fontFamily="@font/medievalsharp"
         android:text="Mezzautunno 1347"
         android:textColor="@color/white"
         android:visibility="invisible"
-        android:textSize="36dp" />
+        android:textSize="36dp"
+        android:focusable="true" />
 
 </LinearLayout>
