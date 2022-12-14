@@ -13,9 +13,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val fadeIn = AnimationUtils.loadAnimation(applicationContext,R.anim.fade_in)
 
         val fadeOut = AnimationUtils.loadAnimation(applicationContext,R.anim.fade_out)
+
+        val mediaPlayer = MediaPlayer.create(this, R.raw.sottofondostoria)
+
+        mediaPlayer.start()
 
         supportActionBar?.hide()
 
