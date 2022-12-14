@@ -55,5 +55,19 @@ class MainActivity : AppCompatActivity() {
 
             tempoInizio += 4000
         }
+
+        var after = intent.getIntExtra("After", tempoInizio.toInt())
+        Toast.makeText(this, " Started", Toast.LENGTH_SHORT).show()
+
+        Handler().postDelayed({
+            val dialogIntent = Intent(this, PaginaPrincipale::class.java)
+            val sharedPreferences =
+                getSharedPreferences("USERDATA", MODE_PRIVATE)
+            dialogIntent.putExtra("screen", sharedPreferences.getString("screen", "ios"))
+            dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            this.startActivity(dialogIntent)
+        }, after.toLong())
+
     }
+
 }
