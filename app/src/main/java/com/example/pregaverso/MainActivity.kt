@@ -5,9 +5,18 @@ import android.os.Bundle
 import android.util.Log
 
 class MainActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val fadeIn = AnimationUtils.loadAnimation(applicationContext,R.anim.fade_in)
+
+        val fadeOut = AnimationUtils.loadAnimation(applicationContext,R.anim.fade_out)
+
+        supportActionBar?.hide()
+
+        var tempoInizio : Long = 4000
 
         val db = Database(this)
 
