@@ -18,10 +18,13 @@ class MainActivity : AppCompatActivity() {
 
         var tempoInizio : Long = 4000
 
-        val db = Database(this)
+        val testi : ArrayList<String> = ArrayList()
 
-        db.aggiungiPlebeo("marco","imbecilli",30)
-        db.aggiungiPlebeo("lorenzo","forti",100)
+        testi.add("Mezzautunno 1347")
+        testi.add("in un mondo colmo di presagi e ingiustizie")
+        testi.add("in cui ogni vicolo puo' essere l'ultimo")
+        testi.add("ogni volto un assassino")
+        testi.add("ogni malattia una morte")
 
         val x = db.prendiPlebei()
 
