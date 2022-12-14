@@ -1,11 +1,17 @@
 package com.example.pregaverso
 
+import android.content.Intent
 import android.media.MediaPlayer
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.primapagina.*
+import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         testi.add("in cui ogni vicolo puo' essere l'ultimo")
         testi.add("ogni volto un assassino")
         testi.add("ogni malattia una prematura dipartita")
+
 
         for(i in 0 until testi.size){
             testoStoria.postDelayed({
