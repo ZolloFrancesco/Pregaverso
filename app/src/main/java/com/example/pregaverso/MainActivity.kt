@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         testi.add("in un mondo colmo di presagi e ingiustizie")
         testi.add("in cui ogni vicolo puo' essere l'ultimo")
         testi.add("ogni volto un assassino")
-        testi.add("ogni malattia una morte")
+        testi.add("ogni malattia una prematura dipartita")
 
         for(i in 0 until testi.size){
             testoStoria.postDelayed({
