@@ -18,7 +18,7 @@
         android:textAlignment="center"
         android:gravity="center"
         android:fontFamily="@font/medievalsharp"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textColor="@color/black"
         android:focusable="true"/>
 
