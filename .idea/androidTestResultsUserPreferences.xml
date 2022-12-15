@@ -21,9 +21,11 @@
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
                 <map>
+                  <entry key="17eb1805" value="120" />
                   <entry key="Duration" value="90" />
                   <entry key="Pixel_3a_XL_API_331" value="120" />
                   <entry key="Tests" value="360" />
+                  <entry key="Xiaomi&#10; Redmi Note 8" value="120" />
                 </map>
               </option>
             </AndroidTestResultsTableState>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#A5C9FF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/bottonePrincipale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/bottoneprincipale"
+            android:clickable="true"
+            android:focusable="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/medievalsharp"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:text="sconto natalizio del 20% su ceri e miracoli"
+        android:textSize="15sp"
+        />
+
+        <ProgressBar
+            android:id="@+id/barraCaricamento"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminate="true"
+            android:layout_gravity="bottom"
+            android:animationResolution="2"
+            android:max="100"
+            android:progress="2"
+            android:progressDrawable="@android:drawable/progress_horizontal"
+            android:progressTint="#3CC54A">
+
+        </ProgressBar>
+
+    </LinearLayout>
+
+</LinearLayout>
