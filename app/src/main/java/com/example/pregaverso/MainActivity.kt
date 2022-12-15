@@ -76,6 +76,9 @@ class MainActivity : AppCompatActivity() {
         }, tempoInizio + 2000)
          */
 
+        btnSkip.setOnClickListener {
+            startActivity(Intent(this@MainActivity, PaginaCaricamento::class.java))
+        }
     }
 
 }
