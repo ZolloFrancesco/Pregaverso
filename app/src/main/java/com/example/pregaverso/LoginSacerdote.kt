@@ -95,6 +95,8 @@ class LoginSacerdote : AppCompatActivity() {
                 // indago sul problema specifico.
                 if (!ts.testUsername(nome)) {
 
+                    if(messaggio != "") messaggio += "\n"
+
                     messaggio+="Problemi col nome:\n"
 
                     // se non e' stato inserito l'username
