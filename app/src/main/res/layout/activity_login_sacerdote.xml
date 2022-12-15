@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottoneEntra"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -14,22 +16,21 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.6"/>
+        app:layout_constraintGuide_percent="0.6" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidaNuvola12"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2"/>
+        app:layout_constraintGuide_percent="0.2" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/nuvola1"
-        app:layout_constraintStart_toEndOf="@id/guidaNuvola11"
         app:layout_constraintBottom_toTopOf="@id/guidaNuvola12"
-        />
+        app:layout_constraintStart_toEndOf="@id/guidaNuvola11" />
 
 
     <!-- NUVOLA 2 -->
@@ -38,22 +39,21 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05"/>
+        app:layout_constraintGuide_percent="0.05" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidaNuvola22"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25"/>
+        app:layout_constraintGuide_percent="0.25" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/nuvola2"
-        app:layout_constraintStart_toEndOf="@id/guidaNuvola21"
         app:layout_constraintBottom_toTopOf="@id/guidaNuvola22"
-        />
+        app:layout_constraintStart_toEndOf="@id/guidaNuvola21" />
 
 
     <!-- NUVOLA 3 -->
@@ -62,22 +62,21 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"/>
+        app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidaNuvola32"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.43"/>
+        app:layout_constraintGuide_percent="0.43" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/nuvola3"
-        app:layout_constraintStart_toEndOf="@id/guidaNuvola31"
         app:layout_constraintBottom_toTopOf="@id/guidaNuvola32"
-        />
+        app:layout_constraintStart_toEndOf="@id/guidaNuvola31" />
 
 
     <!-- NUVOLA 4 -->
@@ -86,22 +85,21 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05"/>
+        app:layout_constraintGuide_percent="0.05" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidaNuvola42"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6"/>
+        app:layout_constraintGuide_percent="0.6" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/nuvola4"
-        app:layout_constraintStart_toEndOf="@id/guidaNuvola41"
         app:layout_constraintBottom_toTopOf="@id/guidaNuvola42"
-        />
+        app:layout_constraintStart_toEndOf="@id/guidaNuvola41" />
 
 
     <!-- NOME -->
@@ -110,30 +108,27 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15"/>
+        app:layout_constraintGuide_percent="0.15" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/guidaNome">
+        app:layout_constraintBottom_toTopOf="@+id/guidaNome"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/nomesacerdote"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            />
+            android:src="@drawable/nomesacerdote" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:background="@drawable/cartainput"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
             android:fontFamily="@font/medievalsharp"
             android:scaleX="1.2"
             android:src="@drawable/cartainput" />
@@ -146,7 +141,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35"/>
+        app:layout_constraintGuide_percent="0.35" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -157,18 +152,17 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/diocesisacerdote"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            />
+            android:src="@drawable/diocesisacerdote" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
             android:background="@drawable/cartainput"
             android:fontFamily="@font/medievalsharp"
-            android:scaleX="1.20"
-            android:layout_marginStart="50dp"/>
+            android:scaleX="1.20" />
     </LinearLayout>
 
 
@@ -178,7 +172,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.55"/>
+        app:layout_constraintGuide_percent="0.55" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -189,18 +183,17 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/paroladordinesacerdote"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            />
+            android:src="@drawable/paroladordinesacerdote" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
             android:background="@drawable/cartainput"
             android:fontFamily="@font/medievalsharp"
-            android:scaleX="1.25"
-            android:layout_marginStart="50dp"/>
+            android:scaleX="1.25" />
     </LinearLayout>
 
 
@@ -210,15 +203,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.37"/>
+        app:layout_constraintGuide_percent="0.37" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/chiesa"
-        app:layout_constraintStart_toEndOf="@id/guidaChiesa"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintStart_toEndOf="@id/guidaChiesa" />
 
 
     <!-- SACERDOTE -->
@@ -227,16 +219,38 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1"/>
+        app:layout_constraintGuide_percent="0.1" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/sacerdote"
-            android:scaleX="1.2"
-            android:scaleY="1.2"
-            app:layout_constraintStart_toEndOf="@id/guidaSacerdote"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
+        android:src="@drawable/sacerdote"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guidaSacerdote" />
+
+
+    <!-- BOTTONE ENTRA -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidaEntra1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidaEntra2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="entra"
+        app:layout_constraintBottom_toTopOf="@id/guidaEntra2"
+        app:layout_constraintStart_toEndOf="@id/guidaEntra1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
