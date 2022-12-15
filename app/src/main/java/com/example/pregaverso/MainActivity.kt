@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                 if(i != 0) testoStoria.text = testi[i]
                                     } , tempoInizio)
 
-            tempoInizio += 2000
+            tempoInizio += 3000
 
             testoStoria.postDelayed({
                 testoStoria.startAnimation(fadeOut)
