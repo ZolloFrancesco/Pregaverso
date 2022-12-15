@@ -7,10 +7,8 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.primapagina.*
 import java.util.*
 
 
