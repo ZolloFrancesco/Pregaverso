@@ -132,6 +132,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:background="@drawable/cartainput"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:fontFamily="@font/medievalsharp"
             android:scaleX="1.2"
             android:src="@drawable/cartainput" />
