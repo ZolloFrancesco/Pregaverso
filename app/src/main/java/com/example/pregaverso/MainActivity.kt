@@ -4,6 +4,7 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
 import android.widget.Toast
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                                     } , tempoInizio)
 
             tempoInizio += 2000
+
             testoStoria.postDelayed({
                 testoStoria.startAnimation(fadeOut)
             } , tempoInizio)
@@ -56,17 +58,25 @@ class MainActivity : AppCompatActivity() {
             tempoInizio += 4000
         }
 
-        var after = intent.getIntExtra("After", tempoInizio.toInt())
-        Toast.makeText(this, " Started", Toast.LENGTH_SHORT).show()
+        val tempoChiusura = intent.getIntExtra("After", tempoInizio.toInt())
 
-        Handler().postDelayed({
-            val dialogIntent = Intent(this, PaginaPrincipale::class.java)
-            val sharedPreferences =
-                getSharedPreferences("USERDATA", MODE_PRIVATE)
+        Handler(Looper.getMainLooper()).postDelayed({
+            val dialogIntent = Intent(this, PaginaCaricamento::class.java)
+            val sharedPreferences = getSharedPreferences("USERDATA", MODE_PRIVATE)
+
             dialogIntent.putExtra("screen", sharedPreferences.getString("screen", "ios"))
             dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+            mediaPlayer.stop()
             this.startActivity(dialogIntent)
-        }, after.toLong())
+        }, tempoChiusura.toLong())
+
+        /*
+        da chiedere perche' non funziona
+        testoStoria.postDelayed({
+            startActivity(Intent(this@MainActivity, PaginaPrincipale::class.java))
+        }, tempoInizio + 2000)
+         */
 
     }
 
