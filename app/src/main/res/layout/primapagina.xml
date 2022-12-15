@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/bottoneprincipale"
-            android:clickable="false"
+            android:clickable="true"
             android:focusable="true" />
 
     <TextView
@@ -29,18 +29,19 @@
         android:textSize="15sp"
         />
 
-        <androidx.core.widget.ContentLoadingProgressBar
+        <ProgressBar
             android:id="@+id/barraCaricamento"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:indeterminate="true"
             android:layout_gravity="bottom"
-            android:animationResolution="5"
+            android:animationResolution="2"
             android:max="100"
-            android:progress="0"
+            android:progress="2"
             android:progressDrawable="@android:drawable/progress_horizontal"
             android:progressTint="#3CC54A">
 
-        </androidx.core.widget.ContentLoadingProgressBar>
+        </ProgressBar>
 
     </LinearLayout>
 
