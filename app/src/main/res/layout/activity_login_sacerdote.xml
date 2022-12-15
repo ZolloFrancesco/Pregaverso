@@ -130,7 +130,9 @@
             android:background="@drawable/cartainput"
             android:fontFamily="@font/medievalsharp"
             android:scaleX="1.2"
-            android:src="@drawable/cartainput" />
+            android:src="@drawable/cartainput"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
     </LinearLayout>
 
 
