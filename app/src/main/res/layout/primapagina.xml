@@ -5,19 +5,23 @@
     android:background="#A5C9FF"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/bottonePrincipale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/bottoneprincipale"
-            android:clickable="true"
-            android:focusable="true" />
+    <TextView
+        android:id="@+id/bottonePrincipale"
+        android:layout_width="223dp"
+        android:layout_height="87dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bottoneprincipale"
+        android:clickable="true"
+        android:text="Pregaverso"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:fontFamily="@font/medievalsharp"
+        android:textSize="35dp"
+        android:textColor="@color/black"
+        android:focusable="true">
+
+    </TextView>
 
     <TextView
         android:layout_width="match_parent"
@@ -31,10 +35,10 @@
 
         <ProgressBar
             android:id="@+id/barraCaricamento"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:indeterminate="true"
-            android:layout_gravity="bottom"
+            android:layout_gravity="center"
             android:animationResolution="2"
             android:max="100"
             android:progress="2"
@@ -44,5 +48,3 @@
         </ProgressBar>
 
     </LinearLayout>
-
-</LinearLayout>
