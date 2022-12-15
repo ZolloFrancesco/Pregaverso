@@ -19,6 +19,7 @@
         android:clickable="true"
         android:fontFamily="@font/medievalsharp"
         android:text="Mezzautunno 1347"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:visibility="invisible"
         android:textSize="36dp"
