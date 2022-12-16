@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    android:orientation="vertical"
-    android:layout_gravity="center"
-    android:gravity="center"
     tools:context=".MainActivity">
 
     <!-- https://www.flaticon.com/free-icons/medieval -->
 
+    <!-- TESTO -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidaTesto"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
     <TextView
         android:id="@+id/testoStoria"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:fontFamily="@font/medievalsharp"
@@ -23,6 +27,33 @@
         android:textColor="@color/white"
         android:visibility="invisible"
         android:textSize="36dp"
-        android:focusable="true" />
+        android:focusable="true"
+        app:layout_constraintTop_toBottomOf="@id/guidaTesto"/>
 
-</LinearLayout>
+
+    <!-- PULSANTE SKIP -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidaSkip1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidaSkip2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <Button
+        android:id="@+id/btnSkip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:text="skip"
+        app:icon="@android:drawable/ic_media_ff"
+        app:iconTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/guidaSkip1"
+        app:layout_constraintEnd_toStartOf="@id/guidaSkip2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

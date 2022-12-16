@@ -91,7 +91,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         db?.execSQL(comando)
         Log.d("CREATA TABELLA SACERDOTI","SUCCESSO")
 
-        comando = "CREATE TABLE $NOME_TABELLA_MIRACOLI ($MIRACOLI_DESCRIZIONE TEXT, $MIRACOLI_NOMESANTO TEXT, $MIRACOLI_COSTO INTEGER, PRIMARY KEY($MIRACOLI_DESCRIZIONE,$MIRACOLI_NOMESANTO))"
+        comando = "CREATE TABLE $NOME_TABELLA_MIRACOLI ($MIRACOLI_DESCRIZIONE TEXT, $MIRACOLI_NOMESANTO TEXT, $MIRACOLI_COSTO INTEGER, $MIRACOLI_TESTO  TEXT, PRIMARY KEY($MIRACOLI_DESCRIZIONE,$MIRACOLI_NOMESANTO))"
         db?.execSQL(comando)
         Log.d("CREATA TABELLA MIRACOLI","SUCCESSO")
 
@@ -199,6 +199,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
                 miracoloPrelevato.descr = cursore.getString(0)
                 miracoloPrelevato.nomeSanto = cursore.getString(1)
                 miracoloPrelevato.costo = cursore.getInt(2)
+                miracoloPrelevato.testo = cursore.getString(3)
 
                 listaDaRestituire.add(miracoloPrelevato)
 
@@ -512,7 +513,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         return true
     }
 
-    fun aggiungiMiracoli(descr: String, nomesanto: String, costo: Int): Boolean {
+    fun aggiungiMiracoli(descr: String, nomesanto: String, costo: Int, testo : String): Boolean {
         if(costo < 0 || descr == "" || nomesanto == ""){
             Log.d("Inserimento Miracoli","INPUT NON VALIDI")
             return false
@@ -522,6 +523,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         daAggiungere.put(MIRACOLI_DESCRIZIONE, descr)
         daAggiungere.put(MIRACOLI_NOMESANTO, nomesanto)
         daAggiungere.put(MIRACOLI_COSTO, costo)
+        daAggiungere.put(MIRACOLI_TESTO, testo)
         db?.insert(NOME_TABELLA_MIRACOLI,null,daAggiungere)
         return true
     }
