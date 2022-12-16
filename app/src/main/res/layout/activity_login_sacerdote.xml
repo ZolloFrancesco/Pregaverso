@@ -276,12 +276,35 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.7" />
 
+    <!--
     <Button
         android:id="@+id/bottoneEntra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/bottone1"
+        android:backgroundTint="#6E4C19"
+        android:src="@drawable/croce"
         android:text="entra"
         app:layout_constraintBottom_toTopOf="@id/guidaEntra2"
         app:layout_constraintStart_toEndOf="@id/guidaEntra1" />
+    -->
+
+
+    <TextView
+        android:id="@+id/bottoneEntra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottone1"
+        android:gravity="center"
+        android:padding="0dp"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:fontFamily="@font/medievalsharp"
+        android:text="Entra"
+        android:textSize="35dp"
+        android:textColor="#FFA416"
+        app:layout_constraintBottom_toTopOf="@id/guidaEntra2"
+        app:layout_constraintStart_toEndOf="@id/guidaEntra1"
+        app:srcCompat="@drawable/bottone1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
