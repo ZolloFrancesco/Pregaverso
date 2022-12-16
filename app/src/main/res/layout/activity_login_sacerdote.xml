@@ -130,7 +130,6 @@
             android:background="@drawable/cartainput"
             android:fontFamily="@font/medievalsharp"
             android:scaleX="1.2"
-            android:src="@drawable/cartainput"
             android:textColor="@color/black"
             android:textColorHint="@color/black" />
     </LinearLayout>
@@ -159,12 +158,13 @@
 
         <EditText
             android:id="@+id/diocesiSacerdote"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:background="@drawable/cartainput"
+            android:hint="padre, mi dia la diocesi da cui proviene"
             android:fontFamily="@font/medievalsharp"
-            android:scaleX="1.20" />
+            android:textStyle="bold"
+            />
     </LinearLayout>
 
 
