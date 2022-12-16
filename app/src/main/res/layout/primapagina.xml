@@ -33,18 +33,4 @@
         android:textSize="15sp"
         />
 
-        <ProgressBar
-            android:id="@+id/barraCaricamento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:layout_gravity="center"
-            android:animationResolution="2"
-            android:max="100"
-            android:progress="2"
-            android:progressDrawable="@android:drawable/progress_horizontal"
-            android:progressTint="#3CC54A">
-
-        </ProgressBar>
-
     </LinearLayout>

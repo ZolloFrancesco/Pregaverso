@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="4dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/descrMiracolo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:overScrollMode="ifContentScrolls"
+                android:textColor="#FFFFFF"
+                android:fontFamily="monospace"
+                android:layout_gravity="center"
+                android:text="testo" />
+
+            <TextView
+                android:id="@+id/testoMiracolo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#BDBDBD"
+                android:fontFamily="monospace"
+                android:textSize="15sp"
+                android:padding="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
+
+            <TextView
+                android:id="@+id/nomeSanto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="nome del santo"/>
+
+        <TextView
+            android:id="@+id/nBaiocchi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100000"
+            />
+
+</LinearLayout>

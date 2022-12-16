@@ -168,6 +168,7 @@
             android:textColorHint="#B9676767"
             android:hint="padre, mi dia la diocesi da cui proviene"
             android:textStyle="bold" />
+
     </LinearLayout>
 
 
