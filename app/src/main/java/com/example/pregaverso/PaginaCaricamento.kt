@@ -14,6 +14,8 @@ class PaginaCaricamento : AppCompatActivity() {
 
         supportActionBar?.hide()
 
+        val bounce = AnimationUtils.loadAnimation(applicationContext,R.anim.bounce)
+
         barraCaricamento.postDelayed({
             barraCaricamento.visibility = INVISIBLE
         },2000)
