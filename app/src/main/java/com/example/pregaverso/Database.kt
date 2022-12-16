@@ -496,7 +496,6 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         return true
     }
 
-
     //
     //
     // Lorenzo Borgia
