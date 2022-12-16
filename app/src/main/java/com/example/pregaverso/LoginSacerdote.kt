@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.animation.AnimationUtils
 import kotlinx.android.synthetic.main.activity_login_sacerdote.*
 import kotlinx.android.synthetic.main.popupregsacerdote.view.*
 
@@ -16,8 +17,12 @@ class LoginSacerdote : AppCompatActivity() {
 
         supportActionBar?.hide()
 
+        val bounce = AnimationUtils.loadAnimation(applicationContext,R.anim.bounce)
+
         // evento alla pressione del tasto "ENTRA"
         bottoneEntra.setOnClickListener {
+
+            bottoneEntra.startAnimation(bounce)
 
             // oggetto con funzioni di utilita'
             val ts = TestStringhe()
@@ -54,7 +59,7 @@ class LoginSacerdote : AppCompatActivity() {
 
             }
             // altrimenti ho avuto qualche problema in input,
-            // quindi cerco il problema e setto di rosso l'avviso specifico.
+            // quindi cerco il problema e modifico il messaggio
             else {
 
                 var messaggio = ""
@@ -63,7 +68,6 @@ class LoginSacerdote : AppCompatActivity() {
                 // indago sul problema specifico.
                 if (!ts.testPassword(parola, conf)) {
 
-                    // visualizzo messaggio informativo che scomparira' dopo 2 secondi
                     messaggio += "Problemi con la parola d'ordine:\n"
                     // se la password non e' stata inserita
                     if (ts.strVuota(parola)) {
