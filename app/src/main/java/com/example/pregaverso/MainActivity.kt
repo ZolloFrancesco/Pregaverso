@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
 
         mediaPlayer.start()
 
+        // service
+
         supportActionBar?.hide()
 
         var tempoInizio : Long = 4000
