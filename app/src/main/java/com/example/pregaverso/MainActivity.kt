@@ -1,7 +1,6 @@
 package com.example.pregaverso
 
 import android.content.Intent
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -23,9 +22,8 @@ class MainActivity : AppCompatActivity() {
         val fadeOut = AnimationUtils.loadAnimation(applicationContext,R.anim.fade_out)
         val bounce = AnimationUtils.loadAnimation(applicationContext,R.anim.bounce)
 
-        val mediaPlayer = MediaPlayer.create(this, R.raw.sottofondostoria)
-
-        mediaPlayer.start()
+        // service
+        startService(Intent(this,ServizioSottofondo::class.java))
 
         supportActionBar?.hide()
 
@@ -64,7 +62,6 @@ class MainActivity : AppCompatActivity() {
             dialogIntent.putExtra("screen", sharedPreferences.getString("screen", "ios"))
             dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
-            mediaPlayer.stop()
             this.startActivity(dialogIntent)
         }, tempoChiusura.toLong())
 

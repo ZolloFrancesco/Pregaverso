@@ -106,7 +106,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
+        app:layout_constraintGuide_percent="0.18" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -115,23 +115,34 @@
         app:layout_constraintBottom_toTopOf="@+id/guidaNome"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <TextView
+            android:id="@+id/bottonePrincipale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            app:srcCompat="@drawable/banner1" />
+            android:layout_gravity="start"
+            android:background="@drawable/banner1"
+            android:text="Nome"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:fontFamily="@font/medievalsharp"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"/>
 
         <EditText
             android:id="@+id/nomeSacerdote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/campoinserimento"
             android:fontFamily="@font/medievalsharp"
-            android:scaleX="1.2"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black" />
+            android:padding="10dp"
+            android:paddingEnd="20dp"
+            android:textAlignment="gravity"
+            android:hint="come si chiama?"
+            android:textColor="@color/black" />
     </LinearLayout>
 
 
@@ -149,25 +160,33 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/guidaDiocesi">
 
-        <ImageView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            app:srcCompat="@drawable/banner1" />
+            android:layout_gravity="start"
+            android:background="@drawable/banner1"
+            android:text="Diocesi"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:fontFamily="@font/medievalsharp"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"/>
 
         <EditText
             android:id="@+id/diocesiSacerdote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="25dp"
             android:background="@drawable/campoinserimento"
             android:fontFamily="@font/medievalsharp"
-            android:scaleX="1.2"
+            android:layout_marginTop="12dp"
             android:textColor="@color/black"
             android:textColorHint="#B9676767"
-            android:hint="padre, mi dia la diocesi da cui proviene"
-            android:textStyle="bold" />
+            android:padding="10dp"
+            android:paddingEnd="20dp"
+            android:hint="padre, mi dia la diocesi da cui proviene" />
 
     </LinearLayout>
 
@@ -178,7 +197,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.55" />
+        app:layout_constraintGuide_percent="0.50" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -189,18 +208,22 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="0dp"
             app:srcCompat="@drawable/banner1" />
 
         <EditText
             android:id="@+id/parolaSacerdote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="25dp"
+            android:padding="10dp"
+            android:paddingEnd="20dp"
+            android:layout_marginTop="12dp"
+            android:hint="parli a bassa voce..."
             android:background="@drawable/campoinserimento"
             android:fontFamily="@font/medievalsharp"
-            android:scaleX="1.25" />
+            />
     </LinearLayout>
 
 

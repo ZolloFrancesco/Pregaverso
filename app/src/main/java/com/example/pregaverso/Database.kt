@@ -509,7 +509,21 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
 
         val db = writableDatabase
 
+        val nRigheEliminate = db.delete(NOME_TABELLA_MIRACOLI,"$MIRACOLI_DESCRIZIONE=? AND $MIRACOLI_NOMESANTO=?", arrayOf(descr,nomeSanto))
+
+        if(nRigheEliminate == 0){
+
+            return false
+        }
+
+        if(nRigheEliminate>1){
+
+            return false
+        }
+
+
         return true
+
     }
 
     fun aggiungiMiracoli(descr: String, nomesanto: String, costo: Int, testo : String): Boolean {
