@@ -27,7 +27,7 @@ class HomeSacerdote : AppCompatActivity() {
         val db = Database(this)
 
         // dichiaro un array di task
-        val listaMiracoli = ArrayList<Miracolo>()
+        val listaMiracoli = db.prendiMiracoli()
 
         // dichiaro un adapter che gestisce la visualizzazione di todoListItem
         val adapter = AdattatoreMiracoli(listaMiracoli, this)
@@ -73,8 +73,7 @@ class HomeSacerdote : AppCompatActivity() {
 
             val dialogBuilder: AlertDialog.Builder?
             val dialog: AlertDialog?
-            val view =
-                LayoutInflater.from(this).inflate(R.layout.popupinserimentomiracolo, null, false)
+            val view = LayoutInflater.from(this).inflate(R.layout.popupinserimentomiracolo, null, false)
             val btnInserisci = view.btnInserisci
             dialogBuilder = AlertDialog.Builder(this).setView(view)
             dialog = dialogBuilder!!.create()
@@ -87,11 +86,18 @@ class HomeSacerdote : AppCompatActivity() {
                         view.costoInserito.text.toString().toInt(),
                         view.testoInserito.text.toString()
                     )
+                    var nuovo = Miracolo()
+                    nuovo.descr = view.descrInserita.text.toString()
+                    nuovo.nomeSanto = view.nomesanto.text.toString()
+                    nuovo.costo = view.costoInserito.text.toString().toInt()
+                    nuovo.testo = view.testoInserito.text.toString()
+                    listaMiracoli.add(nuovo)
                     adapter!!.notifyItemInserted(adapter!!.miracoli.size)
                     dialog!!.dismiss()
                 }
             }
 
+            /*
             // lista che contiene tutti i miracoli nel database
             val miracoliNelDb = db.prendiMiracoli()
 
@@ -110,6 +116,9 @@ class HomeSacerdote : AppCompatActivity() {
                 // aggiungo il nuovo task alla lista che viene visualizzata nel recyclerView
                 listaMiracoli.add(nuovo)
             }
+
+             */
+
         }
     }
 }
