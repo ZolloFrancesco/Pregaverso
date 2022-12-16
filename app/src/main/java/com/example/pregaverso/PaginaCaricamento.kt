@@ -16,10 +16,6 @@ class PaginaCaricamento : AppCompatActivity() {
 
         val bounce = AnimationUtils.loadAnimation(applicationContext,R.anim.bounce)
 
-        barraCaricamento.postDelayed({
-            barraCaricamento.visibility = INVISIBLE
-        },2000)
-
         bottonePrincipale.setOnClickListener{
             bottonePrincipale.startAnimation(bounce)
             startActivity(Intent(this@PaginaCaricamento, LoginSacerdote::class.java))
