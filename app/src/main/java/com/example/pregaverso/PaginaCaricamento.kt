@@ -21,6 +21,7 @@ class PaginaCaricamento : AppCompatActivity() {
         },2000)
 
         bottonePrincipale.setOnClickListener{
+            bottonePrincipale.startAnimation(bounce)
             startActivity(Intent(this@PaginaCaricamento, LoginSacerdote::class.java))
         }
 
