@@ -1,63 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:orientation="vertical"
+    android:padding="4dp"
     android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/popupvert"
-            />
+        app:cardBackgroundColor="#000000">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/descrMiracolo"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="miracolo"/>
+                style="@style/TextAppearance.AppCompat.Title"
+                android:overScrollMode="ifContentScrolls"
+                android:textColor="#FFFFFF"
+                android:fontFamily="monospace"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="testo" />
+
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/testoMiracolo"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="santo che da il miracolo"/>
+                android:textColor="#BDBDBD"
+                android:fontFamily="monospace"
+                android:textSize="15sp"
+                android:padding="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
+
+            <TextView
+                android:id="@+id/nomeSanto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="nome del santo"/>
 
         </LinearLayout>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="opz" />
-
-
-    </LinearLayout>
-
-    <!-- IMMAGINE AL CENTRO
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/popuporizz"/>
-    -->
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-        
         <TextView
+            android:id="@+id/nBaiocchi"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="donami la forza"
-            android:layout_gravity="start"
-            android:gravity="start"/>
-        
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:text="100000"
+            />
 
-</LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
