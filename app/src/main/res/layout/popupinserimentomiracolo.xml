@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/descrInserita"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="di che miracolo si tratta?"
+        android:fontFamily="@font/medievalsharp"
+        />
+
+    <EditText
+        android:id="@+id/nomesanto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="chi lo promette?"
+        android:fontFamily="@font/medievalsharp"
+        />
+
+    <EditText
+        android:id="@+id/testoInserito"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="cosa promette?"
+        android:fontFamily="@font/medievalsharp"
+        />
+
+    <EditText
+        android:id="@+id/costoInserito"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="quanto costa?"
+        android:fontFamily="@font/medievalsharp"
+        />
+
+
+    <Button
+        android:id="@+id/inserisci"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="salva"/>
+
+
+</LinearLayout>
