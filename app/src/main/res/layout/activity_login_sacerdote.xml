@@ -26,9 +26,9 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/nuvola1"
         app:layout_constraintBottom_toTopOf="@id/guidaNuvola12"
-        app:layout_constraintStart_toEndOf="@id/guidaNuvola11" />
+        app:layout_constraintStart_toEndOf="@id/guidaNuvola11"
+        app:srcCompat="@drawable/nuvola1" />
 
 
     <!-- NUVOLA 2 -->
@@ -49,9 +49,9 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/nuvola2"
         app:layout_constraintBottom_toTopOf="@id/guidaNuvola22"
-        app:layout_constraintStart_toEndOf="@id/guidaNuvola21" />
+        app:layout_constraintStart_toEndOf="@id/guidaNuvola21"
+        app:srcCompat="@drawable/nuvola2" />
 
 
     <!-- NUVOLA 3 -->
@@ -72,9 +72,9 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/nuvola3"
         app:layout_constraintBottom_toTopOf="@id/guidaNuvola32"
-        app:layout_constraintStart_toEndOf="@id/guidaNuvola31" />
+        app:layout_constraintStart_toEndOf="@id/guidaNuvola31"
+        app:srcCompat="@drawable/nuvola3" />
 
 
     <!-- NUVOLA 4 -->
@@ -95,9 +95,9 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/nuvola4"
         app:layout_constraintBottom_toTopOf="@id/guidaNuvola42"
-        app:layout_constraintStart_toEndOf="@id/guidaNuvola41" />
+        app:layout_constraintStart_toEndOf="@id/guidaNuvola41"
+        app:srcCompat="@drawable/nuvola5" />
 
 
     <!-- NOME -->
@@ -120,14 +120,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:src="@drawable/nomesacerdote" />
+            app:srcCompat="@drawable/banner1" />
 
         <EditText
             android:id="@+id/nomeSacerdote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:background="@drawable/cartainput"
+            android:background="@drawable/campoinserimento"
             android:fontFamily="@font/medievalsharp"
             android:scaleX="1.2"
             android:textColor="@color/black"
@@ -154,17 +154,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:src="@drawable/diocesisacerdote" />
+            app:srcCompat="@drawable/banner1" />
 
         <EditText
             android:id="@+id/diocesiSacerdote"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:hint="padre, mi dia la diocesi da cui proviene"
+            android:background="@drawable/campoinserimento"
             android:fontFamily="@font/medievalsharp"
-            android:textStyle="bold"
-            />
+            android:scaleX="1.2"
+            android:textColor="@color/black"
+            android:textColorHint="#B9676767"
+            android:hint="padre, mi dia la diocesi da cui proviene"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
 
@@ -187,14 +191,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:src="@drawable/paroladordinesacerdote" />
+            app:srcCompat="@drawable/banner1" />
 
         <EditText
             android:id="@+id/parolaSacerdote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:background="@drawable/cartainput"
+            android:background="@drawable/campoinserimento"
             android:fontFamily="@font/medievalsharp"
             android:scaleX="1.25" />
     </LinearLayout>
@@ -211,9 +215,9 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/chiesa"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/guidaChiesa" />
+        app:layout_constraintStart_toEndOf="@id/guidaChiesa"
+        app:srcCompat="@drawable/chiesa" />
 
 
     <!-- SACERDOTE -->
@@ -229,9 +233,9 @@
         android:layout_height="wrap_content"
         android:scaleX="1.2"
         android:scaleY="1.2"
-        android:src="@drawable/sacerdote"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/guidaSacerdote" />
+        app:layout_constraintStart_toEndOf="@id/guidaSacerdote"
+        app:srcCompat="@drawable/frate1" />
 
 
     <!-- BOTTONE ENTRA -->
