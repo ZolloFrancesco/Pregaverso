@@ -35,12 +35,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="quanto costa?"
+        android:inputType="number"
         android:fontFamily="@font/medievalsharp"
         />
 
 
     <Button
-        android:id="@+id/inserisci"
+        android:id="@+id/btnInserisci"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="salva"/>
