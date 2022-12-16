@@ -12,16 +12,135 @@
         app:cardCornerRadius="4dp"
         android:layout_height="wrap_content">
 
-        <!-- -->
+        <!-- LINEAR LAYOUT 0 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+            android:orientation="vertical">
+
+            <!-- LINEAR LAYOUT 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- LINEAR LAYOUT 2 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- TEXT VIEW -->
+                    <TextView
+                        android:id="@+id/descrMiracolo"
+                        android:text="Benedizione Cutanea"
+                        android:layout_width="wrap_content"
+                        android:padding="10sp"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/medievalsharp"
+                        android:layout_height="wrap_content"/>
 
 
+                    <TextView
+                        android:id="@+id/nomeSanto"
+                        android:text="San paorolento"
+                        android:padding="10sp"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/medievalsharp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <!-- TEXT VIEW -->
+                    <TextView
+                        android:id="@+id/nBaiocchi"
+                        android:layout_width="90sp"
+                        android:layout_height="90sp"
+                        android:padding="0sp"
+                        android:background="@drawable/saccobaiocchi"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:fontFamily="@font/medievalsharp"
+
+                        android:textColor="@color/black"
+                        android:textSize="40dp"
+                        android:src="@drawable/saccobaiocchi" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- LINEAR LAYOUT 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- IMAGE VIEW -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/freccia"/>
+
+                <!-- TEXT VIEW -->
+                <TextView
+                    android:id="@+id/testoMiracolo"
+                    android:layout_width="match_parent"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:padding="10sp"
+                    android:fontFamily="@font/medievalsharp"
+                    android:layout_height="wrap_content"
+                    android:text="qui ci sta la descrizione del funzionamento del miracolo ed eventuali altre spiegazioni utili al funzionamento dello stesso."/>
+            </LinearLayout>
+
+            <!-- LINEAR LAYOUT 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- IMAGE VIEW -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/freccia"/>
+
+                <!-- TEXT VIEW -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textAlignment="center"
+                    android:padding="10sp"
+                    android:fontFamily="@font/medievalsharp"
+                    android:layout_height="wrap_content"
+                    android:text="Commenti"/>
+
+                <!-- TEXT VIEW -->
+                <TextView
+                    android:id="@+id/commentiMiracolo"
+                    android:layout_width="match_parent"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:padding="5sp"
+                    android:textAlignment="textStart"
+                    android:fontFamily="@font/medievalsharp"
+                    android:layout_height="wrap_content"
+                    android:text="1 - molto bello ma inutile, le bolle sono rimaste sulla mia faccia \n2 - molto brutto perche al posto dei brufoli mi sono venute le emorroidi"/>
+            </LinearLayout>
+
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-
-
 </LinearLayout>
