@@ -33,10 +33,10 @@ class MainActivity : AppCompatActivity() {
 
         val testi : ArrayList<String> = ArrayList()
         testi.add("Mezzautunno 1347")
-        testi.add("in un mondo colmo di presagi e ingiustizie")
-        testi.add("in cui ogni vicolo puo' essere l'ultimo")
-        testi.add("ogni volto un assassino")
-        testi.add("ogni malattia una prematura dipartita")
+        //testi.add("in un mondo colmo di presagi e ingiustizie")
+        //testi.add("in cui ogni vicolo puo' essere l'ultimo")
+        //testi.add("ogni volto un assassino")
+        //testi.add("ogni malattia una prematura dipartita")
 
 
         for(i in 0 until testi.size){
