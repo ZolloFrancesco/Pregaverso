@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val fadeIn = AnimationUtils.loadAnimation(applicationContext,R.anim.fade_in)
-
         val fadeOut = AnimationUtils.loadAnimation(applicationContext,R.anim.fade_out)
+        val bounce = AnimationUtils.loadAnimation(applicationContext,R.anim.bounce)
 
         val mediaPlayer = MediaPlayer.create(this, R.raw.sottofondostoria)
 
@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         var tempoInizio : Long = 4000
 
         val testi : ArrayList<String> = ArrayList()
-
         testi.add("Mezzautunno 1347")
         testi.add("in un mondo colmo di presagi e ingiustizie")
         testi.add("in cui ogni vicolo puo' essere l'ultimo")
@@ -77,6 +76,7 @@ class MainActivity : AppCompatActivity() {
          */
 
         btnSkip.setOnClickListener {
+            btnSkip.startAnimation(bounce)
             startActivity(Intent(this@MainActivity, PaginaCaricamento::class.java))
         }
     }
