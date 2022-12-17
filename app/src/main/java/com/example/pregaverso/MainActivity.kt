@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
         for(i in 0 until testi.size){
             testoStoria.postDelayed({
                 testoStoria.startAnimation(fadeIn)
-                if(i == 1) testoStoria.visibility = VISIBLE
                 if(i != 0) testoStoria.text = testi[i]
                                     } , tempoInizio)
 
