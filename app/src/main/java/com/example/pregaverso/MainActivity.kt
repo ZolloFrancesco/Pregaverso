@@ -51,17 +51,15 @@ class MainActivity : AppCompatActivity() {
             tempoInizio += 4000
         }
 
-        val tempoChiusura = intent.getIntExtra("After", tempoInizio.toInt())
+        bottoneEntra.postDelayed( {
+            bottoneEntra.startAnimation(fadeIn)
+            bottoneEntra.visibility= VISIBLE
+        }, tempoInizio)
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            val dialogIntent = Intent(this, PaginaCaricamento::class.java)
-            val sharedPreferences = getSharedPreferences("USERDATA", MODE_PRIVATE)
-
-            dialogIntent.putExtra("screen", sharedPreferences.getString("screen", "ios"))
-            dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-
-            this.startActivity(dialogIntent)
-        }, tempoChiusura.toLong())
+        bottoneEntra.setOnClickListener {
+            bottoneEntra.startAnimation(bounce)
+            startActivity(Intent(this@MainActivity, LoginSacerdote::class.java))
+        }
 
         /*
         da chiedere perche' non funziona
@@ -72,7 +70,9 @@ class MainActivity : AppCompatActivity() {
 
         btnSkip.setOnClickListener {
             btnSkip.startAnimation(bounce)
-            startActivity(Intent(this@MainActivity, PaginaCaricamento::class.java))
+            testoStoria.startAnimation(fadeOut)
+            testoStoria.setTextColor(getResources().getColor(R.color.black,this.theme))
+            bottoneEntra.visibility= VISIBLE
         }
     }
 
