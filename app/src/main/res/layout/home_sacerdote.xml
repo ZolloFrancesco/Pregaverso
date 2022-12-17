@@ -29,8 +29,6 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
     </androidx.recyclerview.widget.RecyclerView>
 
-
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnAggiungiMiracolo"
         android:layout_width="wrap_content"
