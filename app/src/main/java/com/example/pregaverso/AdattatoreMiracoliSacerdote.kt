@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class AdattatoreMiracoli(var miracoli : ArrayList<Miracolo>, private val context : Context) : RecyclerView.Adapter<AdattatoreMiracoli.ViewHolder>() {
+class AdattatoreMiracoliSacerdote(var miracoli : ArrayList<Miracolo>, private val context : Context) : RecyclerView.Adapter<AdattatoreMiracoliSacerdote.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.cardmiracolosacerdote,parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.cardviewmiracolosacerdote2,parent, false)
         return ViewHolder(view)
     }
 
