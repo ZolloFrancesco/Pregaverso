@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import kotlinx.android.synthetic.main.activity_login_sacerdote.*
+import kotlinx.android.synthetic.main.home_sacerdote.*
+import kotlinx.android.synthetic.main.popupbaiocchisacerdote.*
+import kotlinx.android.synthetic.main.popupbaiocchisacerdote.view.*
 import kotlinx.android.synthetic.main.popupregsacerdote.view.*
 
 class LoginSacerdote : AppCompatActivity() {
@@ -119,6 +122,5 @@ class LoginSacerdote : AppCompatActivity() {
 
             }
         }
-
     }
 }
