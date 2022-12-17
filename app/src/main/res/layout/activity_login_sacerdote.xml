@@ -169,7 +169,9 @@
             android:textAlignment="center"
             android:gravity="center"
             android:fontFamily="@font/medievalsharp"
-            android:textSize="25dp"
+            android:textSize="20dp"
+            android:scaleX="1.25"
+            android:scaleY="1.25"
             android:textColor="@color/black"
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"/>
@@ -197,7 +199,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.50" />
+        app:layout_constraintGuide_percent="0.53" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -205,12 +207,22 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/guidaParolaDOrdine">
 
-        <ImageView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="0dp"
-            app:srcCompat="@drawable/banner1" />
+            android:layout_gravity="start"
+            android:background="@drawable/banner1"
+            android:text="Parola\nd'Ordine"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:fontFamily="@font/medievalsharp"
+            android:textSize="15dp"
+            android:scaleX="1.4"
+            android:scaleY="1.4"
+            android:paddingBottom="9dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"/>
 
         <EditText
             android:id="@+id/parolaSacerdote"
