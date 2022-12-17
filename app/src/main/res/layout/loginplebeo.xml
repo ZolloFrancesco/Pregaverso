@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A5C9FF"
+    android:background="#5E6C80"
     tools:context=".LoginSacerdote">
 
 
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/guidaNuvola12"
         app:layout_constraintStart_toEndOf="@id/guidaNuvola11"
-        app:srcCompat="@drawable/nuvola1" />
+        app:srcCompat="@drawable/nuvola2" />
 
 
     <!-- NUVOLA 2 -->
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/guidaNuvola22"
         app:layout_constraintStart_toEndOf="@id/guidaNuvola21"
-        app:srcCompat="@drawable/nuvola2" />
+        app:srcCompat="@drawable/nuvola1" />
 
 
     <!-- NUVOLA 3 -->
@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/guidaNuvola32"
         app:layout_constraintStart_toEndOf="@id/guidaNuvola31"
-        app:srcCompat="@drawable/nuvola3" />
+        app:srcCompat="@drawable/nuvola5" />
 
 
     <!-- NUVOLA 4 -->
@@ -97,7 +97,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/guidaNuvola42"
         app:layout_constraintStart_toEndOf="@id/guidaNuvola41"
-        app:srcCompat="@drawable/nuvola5" />
+        app:srcCompat="@drawable/nuvola3" />
 
 
     <!-- NOME -->
@@ -141,7 +141,7 @@
             android:padding="10dp"
             android:paddingEnd="20dp"
             android:textAlignment="gravity"
-            android:hint="come si chiama?"
+            android:hint="come ti chiami?"
             android:textColor="@color/black" />
     </LinearLayout>
 
@@ -165,7 +165,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:background="@drawable/banner1"
-            android:text="Diocesi"
+            android:text="Casata"
             android:textAlignment="center"
             android:gravity="center"
             android:fontFamily="@font/medievalsharp"
@@ -188,7 +188,7 @@
             android:textColorHint="#B9676767"
             android:padding="10dp"
             android:paddingEnd="20dp"
-            android:hint="padre, mi dia la diocesi da cui proviene" />
+            android:hint="di quale casata?" />
 
     </LinearLayout>
 
@@ -232,7 +232,7 @@
             android:padding="10dp"
             android:paddingEnd="20dp"
             android:layout_marginTop="12dp"
-            android:hint="parli a bassa voce..."
+            android:hint="parola d'ordine"
             android:background="@drawable/campoinserimento"
             android:fontFamily="@font/medievalsharp"
             />
@@ -252,7 +252,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/guidaChiesa"
-        app:srcCompat="@drawable/chiesa" />
+        app:srcCompat="@drawable/capanna" />
 
 
     <!-- SACERDOTE -->
@@ -270,7 +270,7 @@
         android:scaleY="1.2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/guidaSacerdote"
-        app:srcCompat="@drawable/frate1" />
+        app:srcCompat="@drawable/plebeo" />
 
 
     <!-- BOTTONE ENTRA -->
@@ -288,35 +288,12 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.7" />
 
-    <!--
     <Button
         android:id="@+id/bottoneEntra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/bottone1"
-        android:backgroundTint="#6E4C19"
-        android:src="@drawable/croce"
         android:text="entra"
         app:layout_constraintBottom_toTopOf="@id/guidaEntra2"
         app:layout_constraintStart_toEndOf="@id/guidaEntra1" />
-    -->
-
-
-    <TextView
-        android:id="@+id/bottoneEntra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bottone1"
-        android:gravity="center"
-        android:padding="0dp"
-        android:scaleX="0.8"
-        android:scaleY="0.8"
-        android:fontFamily="@font/medievalsharp"
-        android:text="Entra"
-        android:textSize="35dp"
-        android:textColor="#FFA416"
-        app:layout_constraintBottom_toTopOf="@id/guidaEntra2"
-        app:layout_constraintStart_toEndOf="@id/guidaEntra1"
-        app:srcCompat="@drawable/bottone1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

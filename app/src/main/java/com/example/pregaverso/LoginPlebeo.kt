@@ -3,16 +3,13 @@ package com.example.pregaverso
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.AnimationUtils
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_login_sacerdote.*
-import kotlinx.android.synthetic.main.home_sacerdote.*
-import kotlinx.android.synthetic.main.popupbaiocchisacerdote.*
-import kotlinx.android.synthetic.main.popupbaiocchisacerdote.view.*
 import kotlinx.android.synthetic.main.popupregsacerdote.view.*
 
-class LoginSacerdote : AppCompatActivity() {
+class LoginPlebeo : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +17,7 @@ class LoginSacerdote : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        val bounce = AnimationUtils.loadAnimation(applicationContext,R.anim.bounce)
+        val bounce = AnimationUtils.loadAnimation(applicationContext, R.anim.bounce)
 
         // evento alla pressione del tasto "ENTRA"
         bottoneEntra.setOnClickListener {
@@ -55,7 +52,7 @@ class LoginSacerdote : AppCompatActivity() {
                     db.aggiungiCredenziali(nome, diocesi, parola)
 
                     btnProcedi.setOnClickListener {
-                        startActivity(Intent(this@LoginSacerdote, HomeSacerdote::class.java))
+                        startActivity(Intent(this@LoginPlebeo, HomePlebeo::class.java))
                     }
 
                 }
@@ -89,12 +86,12 @@ class LoginSacerdote : AppCompatActivity() {
 
                     // se la password non contiene almeno un numero
                     if (!ts.strConNum(parola)) {
-                        messaggio += "- davvero non rimembra il numero?\n"
+                        messaggio += "- davvero non ti ricordi il numero?\n"
                     }
 
                     // se la password e' minore di 8 caratteri
                     if (ts.strCorta(parola)) {
-                        messaggio += "- non può essere, troppo corta\n"
+                        messaggio += "- troppo corta, pezzente.\n"
                     }
                 }
 
@@ -102,18 +99,18 @@ class LoginSacerdote : AppCompatActivity() {
                 // indago sul problema specifico.
                 if (!ts.testUsername(nome)) {
 
-                    if(messaggio != "") messaggio += "\n"
+                    if (messaggio != "") messaggio += "\n"
 
-                    messaggio+="Problemi col nome:\n"
+                    messaggio += "Problemi col nome:\n"
 
                     // se non e' stato inserito l'username
                     if (ts.strVuota(nome)) {
-                        messaggio += "-come si chiama, padre?\n"
+                        messaggio += "- come ti chiami, padre?\n"
                     }
 
                     // se l'username ha spazi interni
                     if (ts.strSpaziInterni(nome)) {
-                        messaggio += "-Onnipotenzo ha bandito i secondi nomi"
+                        messaggio += "- Onnipotenzo ha bandito i secondi nomi"
                     }
                 }
                 btnProcedi.setText(messaggio)

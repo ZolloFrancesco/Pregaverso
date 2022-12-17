@@ -4,6 +4,8 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:gravity="center"
+    android:padding="20sp"
+    android:background="@drawable/popupvert"
     android:orientation="vertical">
 
     <EditText

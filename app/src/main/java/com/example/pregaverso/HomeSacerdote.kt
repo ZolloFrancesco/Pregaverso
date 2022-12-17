@@ -2,6 +2,7 @@ package com.example.pregaverso
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -9,8 +10,9 @@ import android.view.LayoutInflater
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.cardmiracolosacerdote.view.*
 import kotlinx.android.synthetic.main.home_sacerdote.*
+import kotlinx.android.synthetic.main.popupbaiocchisacerdote.*
+import kotlinx.android.synthetic.main.popupbaiocchisacerdote.view.*
 import kotlinx.android.synthetic.main.popupinserimentomiracolo.view.*
 
 class HomeSacerdote : AppCompatActivity() {
@@ -30,7 +32,7 @@ class HomeSacerdote : AppCompatActivity() {
         val listaMiracoli = db.prendiMiracoli()
 
         // dichiaro un adapter che gestisce la visualizzazione di todoListItem
-        val adapter = AdattatoreMiracoli(listaMiracoli, this)
+        val adapter = AdattatoreMiracoliSacerdote(listaMiracoli, this)
         recyclerView.adapter = adapter
 
         // dichiaro un LinearLayoutManager
@@ -86,7 +88,7 @@ class HomeSacerdote : AppCompatActivity() {
                         view.costoInserito.text.toString().toInt(),
                         view.testoInserito.text.toString()
                     )
-                    var nuovo = Miracolo()
+                    val nuovo = Miracolo()
                     nuovo.descr = view.descrInserita.text.toString()
                     nuovo.nomeSanto = view.nomesanto.text.toString()
                     nuovo.costo = view.costoInserito.text.toString().toInt()
@@ -97,27 +99,27 @@ class HomeSacerdote : AppCompatActivity() {
                 }
             }
 
-            /*
-            // lista che contiene tutti i miracoli nel database
-            val miracoliNelDb = db.prendiMiracoli()
+            btnLoginPlebeo.setOnClickListener{
+                val viewPopup = layoutInflater.inflate(R.layout.popupbaiocchisacerdote, null)
 
-            // per ogni elemento dell'array todoList
-            for (i in 0 until miracoliNelDb.size) {
+                val popupBuilder: AlertDialog.Builder? = AlertDialog.Builder(this).setView(viewPopup)
+                val popup: AlertDialog = popupBuilder!!.create()
 
-                // istanzio un nuovo task
-                val nuovo = Miracolo()
+                popup.show()
 
-                // lo riempio con l'elemento i-esimo di todoList
-                nuovo.testo = miracoliNelDb[i].testo
-                nuovo.nomeSanto = miracoliNelDb[i].nomeSanto
-                nuovo.descr = miracoliNelDb[i].descr
-                nuovo.costo = miracoliNelDb[i].costo
+                val btnConferma = viewPopup.btnConferma
 
-                // aggiungo il nuovo task alla lista che viene visualizzata nel recyclerView
-                listaMiracoli.add(nuovo)
+                btnConferma.setOnClickListener {
+                    if(nBaiocchi.text.toString().toInt() < 0){
+                        btnConferma.text = ""
+                        btnConferma.hint = "calmo, padre."
+                    } else if(nBaiocchi.text.toString().toInt() > 80){
+
+                        btnConferma.text = ""
+                        btnConferma.hint = "forse intendete ${(nBaiocchi.text.toString().toInt()%10)}?"
+                    } else startActivity(Intent(this@HomeSacerdote, LoginPlebeo::class.java))
+                }
             }
-
-             */
 
         }
     }

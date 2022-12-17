@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="4dp"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@color/white"
+        android:layout_height="wrap_content">
+
+        <!-- LINEAR LAYOUT 0 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- LINEAR LAYOUT 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- LINEAR LAYOUT 2 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- TEXT VIEW -->
+                    <TextView
+                        android:id="@+id/descrMiracolo"
+                        android:text="Benedizione Cutanea"
+                        android:maxLength="23"
+                        android:layout_width="wrap_content"
+                        android:padding="10sp"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/medievalsharp"
+                        android:layout_height="wrap_content"/>
+
+
+                    <TextView
+                        android:id="@+id/nomeSanto"
+                        android:text="San paorolento"
+                        android:padding="10sp"
+                        android:textSize="20sp"
+                        android:maxLength="20"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/medievalsharp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+
+
+                    <!-- TEXT VIEW -->
+                    <ImageView
+                        android:id="@+id/nBaiocchi"
+                        android:gravity="center"
+                        android:layout_width="60sp"
+                        android:layout_height="60sp"
+                        android:background="@drawable/saccobaiocchi"
+                        android:layout_gravity="center"
+                        android:padding="0sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100"
+                        android:textSize="30dp"
+                        android:maxLength="3"
+                        android:padding="10sp"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/medievalsharp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- LINEAR LAYOUT 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- IMAGE VIEW -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/freccia"/>
+
+                <!-- TEXT VIEW -->
+                <TextView
+                    android:id="@+id/testoMiracolo"
+                    android:layout_width="match_parent"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:padding="10sp"
+                    android:fontFamily="@font/medievalsharp"
+                    android:layout_height="wrap_content"
+                    android:text="Qui ci sta la descrizione del funzionamento del miracolo ed eventuali altre spiegazioni utili al funzionamento dello stesso."/>
+            </LinearLayout>
+
+            <!-- LINEAR LAYOUT 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- IMAGE VIEW -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/freccia"/>
+
+                <!-- TEXT VIEW -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textAlignment="center"
+                    android:padding="10sp"
+                    android:fontFamily="@font/medievalsharp"
+                    android:layout_height="wrap_content"
+                    android:text="Commenti"/>
+
+                <!-- TEXT VIEW -->
+                <TextView
+                    android:id="@+id/commentiMiracolo"
+                    android:layout_width="match_parent"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:padding="5sp"
+                    android:textAlignment="textStart"
+                    android:fontFamily="@font/medievalsharp"
+                    android:layout_height="wrap_content"
+                    android:text="1 - molto bello ma inutile, le bolle sono rimaste sulla mia faccia \n2 - molto brutto perche al posto dei brufoli mi sono venute le emorroidi"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
