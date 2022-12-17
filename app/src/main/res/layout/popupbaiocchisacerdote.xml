@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:padding="20sp"
+    android:background="@drawable/popupvert"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/nBaiocchi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="quanti baiocchi vi ha dato il pezzente?"
+        android:fontFamily="@font/medievalsharp"
+        />
+
+    <Button
+        android:id="@+id/btnConferma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="salva"/>
+
+
+</LinearLayout>
