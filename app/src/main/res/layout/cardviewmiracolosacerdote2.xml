@@ -68,7 +68,6 @@
 
                     <!-- TEXT VIEW -->
                     <ImageView
-                        android:id="@+id/nBaiocchi"
                         android:gravity="center"
                         android:layout_width="60sp"
                         android:layout_height="60sp"
@@ -76,11 +75,12 @@
                         android:layout_gravity="center"
                         android:padding="0sp" />
                     <TextView
+                        android:id="@+id/nBaiocchi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="100"
                         android:textSize="30dp"
-                        android:maxLength="3"
+                        android:maxLength="4"
                         android:padding="10sp"
                         android:textAlignment="center"
                         android:layout_gravity="center"

@@ -2,8 +2,6 @@ package com.example.pregaverso
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
@@ -31,16 +29,15 @@ class MainActivity : AppCompatActivity() {
 
         val testi : ArrayList<String> = ArrayList()
         testi.add("Mezzautunno 1347")
-        //testi.add("in un mondo colmo di presagi e ingiustizie")
-        //testi.add("in cui ogni vicolo puo' essere l'ultimo")
-        //testi.add("ogni volto un assassino")
-        //testi.add("ogni malattia una prematura dipartita")
+        testi.add("in un mondo colmo di presagi e ingiustizie")
+        testi.add("in cui ogni vicolo puo' essere l'ultimo")
+        testi.add("ogni volto un assassino")
+        testi.add("ogni malattia una prematura dipartita")
 
 
         for(i in 0 until testi.size){
             testoStoria.postDelayed({
                 testoStoria.startAnimation(fadeIn)
-                if(i == 1) testoStoria.visibility = VISIBLE
                 if(i != 0) testoStoria.text = testi[i]
                                     } , tempoInizio)
 
@@ -53,17 +50,15 @@ class MainActivity : AppCompatActivity() {
             tempoInizio += 4000
         }
 
-        val tempoChiusura = intent.getIntExtra("After", tempoInizio.toInt())
+        bottoneEntra.postDelayed( {
+            bottoneEntra.startAnimation(fadeIn)
+            bottoneEntra.visibility= VISIBLE
+        }, tempoInizio)
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            val dialogIntent = Intent(this, PaginaCaricamento::class.java)
-            val sharedPreferences = getSharedPreferences("USERDATA", MODE_PRIVATE)
-
-            dialogIntent.putExtra("screen", sharedPreferences.getString("screen", "ios"))
-            dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-
-            this.startActivity(dialogIntent)
-        }, tempoChiusura.toLong())
+        bottoneEntra.setOnClickListener {
+            bottoneEntra.startAnimation(bounce)
+            startActivity(Intent(this@MainActivity, LoginSacerdote::class.java))
+        }
 
         /*
         da chiedere perche' non funziona
@@ -74,7 +69,9 @@ class MainActivity : AppCompatActivity() {
 
         btnSkip.setOnClickListener {
             btnSkip.startAnimation(bounce)
-            startActivity(Intent(this@MainActivity, PaginaCaricamento::class.java))
+            testoStoria.startAnimation(fadeOut)
+            testoStoria.setTextColor(getResources().getColor(R.color.black,this.theme))
+            bottoneEntra.visibility= VISIBLE
         }
     }
 

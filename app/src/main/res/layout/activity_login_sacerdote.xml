@@ -140,8 +140,9 @@
             android:fontFamily="@font/medievalsharp"
             android:padding="10dp"
             android:paddingEnd="20dp"
+            android:textColorHint="#B9676767"
             android:textAlignment="gravity"
-            android:hint="come si chiama?"
+            android:hint="come vi chiamate?"
             android:textColor="@color/black" />
     </LinearLayout>
 
@@ -174,7 +175,7 @@
             android:scaleY="1.25"
             android:textColor="@color/black"
             android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"/>
+            android:layout_marginStart="35dp"/>
 
         <EditText
             android:id="@+id/diocesiSacerdote"
@@ -188,7 +189,7 @@
             android:textColorHint="#B9676767"
             android:padding="10dp"
             android:paddingEnd="20dp"
-            android:hint="padre, mi dia la diocesi da cui proviene" />
+            android:hint="da dove provenite?" />
 
     </LinearLayout>
 
@@ -222,7 +223,7 @@
             android:paddingBottom="9dp"
             android:textColor="@color/black"
             android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"/>
+            android:layout_marginStart="45dp"/>
 
         <EditText
             android:id="@+id/parolaSacerdote"
@@ -232,10 +233,12 @@
             android:padding="10dp"
             android:paddingEnd="20dp"
             android:layout_marginTop="12dp"
-            android:hint="parli a bassa voce..."
+            android:hint="parlate a bassa voce..."
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textColorHint="#B9676767"
             android:background="@drawable/campoinserimento"
-            android:fontFamily="@font/medievalsharp"
-            />
+            android:fontFamily="@font/medievalsharp" />
     </LinearLayout>
 
 

@@ -9,13 +9,13 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/nBaiocchi"
+        android:id="@+id/nBaiocchiInseriti"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:hint="quanti baiocchi vi ha dato il pezzente?"
         android:fontFamily="@font/medievalsharp"
-        />
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/btnConferma"

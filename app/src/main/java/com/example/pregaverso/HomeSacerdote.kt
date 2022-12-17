@@ -94,7 +94,7 @@ class HomeSacerdote : AppCompatActivity() {
                     nuovo.costo = view.costoInserito.text.toString().toInt()
                     nuovo.testo = view.testoInserito.text.toString()
                     listaMiracoli.add(nuovo)
-                    adapter!!.notifyItemInserted(adapter!!.miracoli.size)
+                    adapter.notifyItemInserted(adapter.miracoli.size)
                     dialog!!.dismiss()
                 }
             }
@@ -110,14 +110,18 @@ class HomeSacerdote : AppCompatActivity() {
                 val btnConferma = viewPopup.btnConferma
 
                 btnConferma.setOnClickListener {
-                    if(nBaiocchi.text.toString().toInt() < 0){
+                    popup.dismiss()
+                    /*
+                    if(nBaiocchiInseriti.text.toString().toInt() < 0){
                         btnConferma.text = ""
                         btnConferma.hint = "calmo, padre."
-                    } else if(nBaiocchi.text.toString().toInt() > 80){
+                    } else if(nBaiocchiInseriti.text.toString().toInt() > 80){
 
                         btnConferma.text = ""
-                        btnConferma.hint = "forse intendete ${(nBaiocchi.text.toString().toInt()%10)}?"
-                    } else startActivity(Intent(this@HomeSacerdote, LoginPlebeo::class.java))
+                        btnConferma.hint = "forse intendete ${(nBaiocchiInseriti.text.toString().toInt()%10)}?"
+                    } else
+                        */
+                        startActivity(Intent(this@HomeSacerdote, LoginPlebeo::class.java))
                 }
             }
 

@@ -55,6 +55,7 @@ class LoginSacerdote : AppCompatActivity() {
                     db.aggiungiCredenziali(nome, diocesi, parola)
 
                     btnProcedi.setOnClickListener {
+                        popupReg.dismiss()
                         startActivity(Intent(this@LoginSacerdote, HomeSacerdote::class.java))
                     }
 
