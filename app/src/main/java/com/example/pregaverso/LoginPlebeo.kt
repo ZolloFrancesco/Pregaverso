@@ -6,8 +6,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_login_sacerdote.*
-import kotlinx.android.synthetic.main.popupregsacerdote.view.*
+import kotlinx.android.synthetic.main.loginsacerdote.*
+import kotlinx.android.synthetic.main.popupinformativo.view.*
 
 class LoginPlebeo : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
@@ -34,7 +34,7 @@ class LoginPlebeo : AppCompatActivity() {
             val parola = parolaSacerdote.text.toString()
             val conf = parola
 
-            val viewPopup = layoutInflater.inflate(R.layout.popupregsacerdote, null)
+            val viewPopup = layoutInflater.inflate(R.layout.popupinformativo, null)
             val btnProcedi = viewPopup.btnprocedi
 
             val popupBuilder: AlertDialog.Builder? = AlertDialog.Builder(this).setView(viewPopup)
