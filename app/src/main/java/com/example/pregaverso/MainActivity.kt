@@ -52,7 +52,17 @@ class MainActivity : AppCompatActivity() {
 
         bottoneEntra.postDelayed( {
             bottoneEntra.startAnimation(fadeIn)
-            bottoneEntra.visibility= VISIBLE
+            bottoneEntra.visibility = VISIBLE
+        }, tempoInizio)
+
+        alette.postDelayed( {
+            alette.startAnimation(fadeIn)
+            alette.visibility = VISIBLE
+        }, tempoInizio)
+
+        titolo.postDelayed( {
+            titolo.startAnimation(fadeIn)
+            titolo.visibility = VISIBLE
         }, tempoInizio)
 
         bottoneEntra.setOnClickListener {
