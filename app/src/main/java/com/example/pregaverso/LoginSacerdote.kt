@@ -5,18 +5,19 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.animation.AnimationUtils
-import kotlinx.android.synthetic.main.activity_login_sacerdote.*
-import kotlinx.android.synthetic.main.home_sacerdote.*
+import kotlinx.android.synthetic.main.loginsacerdote.*
+import kotlinx.android.synthetic.main.homesacerdote.*
 import kotlinx.android.synthetic.main.popupbaiocchisacerdote.*
 import kotlinx.android.synthetic.main.popupbaiocchisacerdote.view.*
-import kotlinx.android.synthetic.main.popupregsacerdote.view.*
+import kotlinx.android.synthetic.main.popupinformativo.view.*
 
 class LoginSacerdote : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login_sacerdote)
+        setContentView(R.layout.loginsacerdote)
 
         supportActionBar?.hide()
 
@@ -37,7 +38,7 @@ class LoginSacerdote : AppCompatActivity() {
             val parola = parolaSacerdote.text.toString()
             val conf = parola
 
-            val viewPopup = layoutInflater.inflate(R.layout.popupregsacerdote, null)
+            val viewPopup = layoutInflater.inflate(R.layout.popupinformativo, null)
             val btnProcedi = viewPopup.btnprocedi
 
             val popupBuilder: AlertDialog.Builder? = AlertDialog.Builder(this).setView(viewPopup)
@@ -47,8 +48,8 @@ class LoginSacerdote : AppCompatActivity() {
             if (ts.testRegistrazione(nome, parola, conf)) {
 
                 if (!db.testUtente(nome, diocesi, parola)) {
-
-                    btnProcedi.setText("Registrazione \n Completata")
+                    btnProcedi.textAlignment = View.TEXT_ALIGNMENT_CENTER
+                    btnProcedi.text = "Benvenuto, Padre."
 
                     popupReg.show()
 
@@ -58,6 +59,16 @@ class LoginSacerdote : AppCompatActivity() {
                         popupReg.dismiss()
                         startActivity(Intent(this@LoginSacerdote, HomeSacerdote::class.java))
                     }
+                } else{
+                    btnProcedi.textAlignment = View.TEXT_ALIGNMENT_CENTER
+                    btnProcedi.text = "Bentornato, Padre."
+
+                    popupReg.show()
+
+                    btnProcedi.postDelayed({
+                        popupReg.dismiss()
+                        startActivity(Intent(this@LoginSacerdote, HomeSacerdote::class.java))
+                    },1000)
 
                 }
 
@@ -117,9 +128,14 @@ class LoginSacerdote : AppCompatActivity() {
                         messaggio += "-Onnipotenzo ha bandito i secondi nomi"
                     }
                 }
-                btnProcedi.setText(messaggio)
+                btnProcedi.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+                btnProcedi.text = messaggio
 
                 popupReg.show()
+
+                btnProcedi.setOnClickListener {
+                    popupReg.dismiss()
+                }
 
             }
         }
