@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,8 @@ import kotlinx.android.synthetic.main.homesacerdote.*
 import kotlinx.android.synthetic.main.popupbaiocchisacerdote.*
 import kotlinx.android.synthetic.main.popupbaiocchisacerdote.view.*
 import kotlinx.android.synthetic.main.popupinserimentomiracolo.view.*
+
+var baiocchiPassati : Int = 0
 
 class HomeSacerdote : AppCompatActivity() {
     @SuppressLint("RestrictedApi")
@@ -81,19 +84,19 @@ class HomeSacerdote : AppCompatActivity() {
             dialog.show()
             btnInserisci.setOnClickListener {
                 if (view.descrInserita.text.toString() != "" || view.nomesanto.text.toString() != "" || view.costoInserito.text.toString() != "") {
-                    db.aggiungiMiracoli(
-                        view.descrInserita.text.toString(),
-                        view.nomesanto.text.toString(),
-                        view.costoInserito.text.toString().toInt(),
-                        view.testoInserito.text.toString()
-                    )
-                    val nuovo = Miracolo()
-                    nuovo.descr = view.descrInserita.text.toString()
-                    nuovo.nomeSanto = view.nomesanto.text.toString()
-                    nuovo.costo = view.costoInserito.text.toString().toInt()
-                    nuovo.testo = view.testoInserito.text.toString()
-                    listaMiracoli.add(nuovo)
-                    adapter.notifyItemInserted(adapter.miracoli.size)
+                    if( db.aggiungiMiracoli(    view.descrInserita.text.toString(),
+                                                view.nomesanto.text.toString(),
+                                                view.costoInserito.text.toString().toInt(),
+                                                view.testoInserito.text.toString()
+                                            )){
+                        val nuovo = Miracolo()
+                        nuovo.descr = view.descrInserita.text.toString()
+                        nuovo.nomeSanto = view.nomesanto.text.toString()
+                        nuovo.costo = view.costoInserito.text.toString().toInt()
+                        nuovo.testo = view.testoInserito.text.toString()
+                        listaMiracoli.add(nuovo)
+                        adapter.notifyItemInserted(adapter.miracoli.size)
+                    }
                     dialog!!.dismiss()
                 }
             }
@@ -121,7 +124,8 @@ class HomeSacerdote : AppCompatActivity() {
                     } else
 
                      */
-                        startActivity(Intent(this@HomeSacerdote, LoginPlebeo::class.java))
+                    //baiocchiPassati = nBaiocchiInseriti.text.toString().toInt()
+                    startActivity(Intent(this@HomeSacerdote, LoginPlebeo::class.java))
                 }
             }
 
