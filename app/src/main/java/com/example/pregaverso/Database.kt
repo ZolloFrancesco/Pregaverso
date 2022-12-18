@@ -588,7 +588,9 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         daAggiungere.put(MIRACOLI_NOMESANTO, nomesanto)
         daAggiungere.put(MIRACOLI_COSTO, costo)
         daAggiungere.put(MIRACOLI_TESTO, testo)
-        db?.insert(NOME_TABELLA_MIRACOLI,null,daAggiungere)
+        val risultato = db?.insert(NOME_TABELLA_MIRACOLI,null,daAggiungere)
+
+        if(risultato == (-1).toLong()) return false
         return true
     }
 
