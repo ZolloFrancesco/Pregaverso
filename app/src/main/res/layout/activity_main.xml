@@ -96,4 +96,54 @@
         app:layout_constraintEnd_toStartOf="@id/guidaBottone2"
         android:background="@drawable/bottonegiallo"
         android:focusable="true" />
+
+
+
+    <!-- ALETTE E TITOLO -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidaAlette1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidaAlette2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidaAlette3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <ImageView
+        android:id="@+id/alette"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:background="@drawable/ali"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/guidaAlette1"
+        app:layout_constraintStart_toStartOf="@id/guidaAlette3"
+        app:layout_constraintEnd_toStartOf="@id/guidaAlette2"/>
+
+    <TextView
+        android:id="@+id/titolo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:shadowColor="#000000"
+        android:shadowDx="8"
+        android:shadowDy="2"
+        android:shadowRadius="1.6"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/medievalsharp"
+        android:textSize="60sp"
+        android:text="Pregaverso"
+        android:visibility="gone"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="@id/guidaAlette1"
+        app:layout_constraintStart_toStartOf="@id/guidaAlette3"
+        app:layout_constraintEnd_toStartOf="@id/guidaAlette2"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
