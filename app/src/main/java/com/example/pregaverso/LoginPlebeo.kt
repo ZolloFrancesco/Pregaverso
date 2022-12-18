@@ -4,10 +4,15 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.loginsacerdote.*
 import kotlinx.android.synthetic.main.popupinformativo.view.*
+
+var plebeoCorrente = Plebeo()
+
 
 class LoginPlebeo : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
