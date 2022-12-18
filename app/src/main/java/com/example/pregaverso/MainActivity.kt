@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activitymain.*
 import java.util.*
 
 
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activitymain)
 
         val fadeIn = AnimationUtils.loadAnimation(applicationContext,R.anim.fade_in)
         val fadeOut = AnimationUtils.loadAnimation(applicationContext,R.anim.fade_out)
