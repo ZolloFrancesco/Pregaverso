@@ -261,6 +261,57 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         return false
     }
 
+    // toglie nBaiocchi al Plebeo univocamente identificato dalla coppia {nomePlebeo,casata} all'interno del Database.
+    // restituisce false se non ha modificato nessun Plebeo, se ha modificato troppi Plebei o se c'e' stato un errore sconosciuto.
+    // restituisce true in caso di corretta modifica.
+    // non controlla se il Plebeo ha abbastanza baiocchi. Nel caso ne avra' negativi.
+    fun togliBaiocchiAPlebeo(nomePlebeo : String, casata : String, nBaiocchi : Int) : Boolean{
+
+        if(nBaiocchi < 0 || nomePlebeo == "" || casata == ""){
+            Log.d("TOLGO $nBaiocchi BAIOCCHI A $nomePlebeo DI CASA $casata","INPUT NON VALIDI")
+            return false
+        }
+
+        val db : SQLiteDatabase = writableDatabase
+
+        val listaPlebei = prendiPlebei()
+
+        var baiocchiVecchi = 0
+
+        for(i in 0 until listaPlebei.size){
+
+            if( ( listaPlebei[i].nome == nomePlebeo ) && ( listaPlebei[i].casata == casata ) ){
+
+                baiocchiVecchi = listaPlebei[i].baiocchi
+            }
+        }
+
+        val modificato = ContentValues()
+
+        modificato.put(PLEBEI_NOME,nomePlebeo)
+        modificato.put(PLEBEI_CASATA,casata)
+        modificato.put(PLEBEI_BAIOCCHI,baiocchiVecchi - nBaiocchi)
+
+        val nModificati = db.update(NOME_TABELLA_PLEBEI, modificato, "$PLEBEI_NOME=? AND $PLEBEI_CASATA=?", arrayOf(nomePlebeo,casata))
+
+        if (nModificati == 1){
+            Log.d("TOLGO $nBaiocchi BAIOCCHI A $nomePlebeo DI CASA $casata", "SUCCESSO")
+            return true
+        }
+
+        if(nModificati == 0){
+            Log.d("TOLGO $nBaiocchi BAIOCCHI A $nomePlebeo DI CASA $casata", "NESSUN PLEBEO MODIFICATO")
+            return false
+        }
+
+        if(nModificati > 1){
+            Log.d("TOLGO $nBaiocchi BAIOCCHI A $nomePlebeo DI CASA $casata", "TROPPI PLEBEI MODIFICATI!")
+            return false
+        }
+        Log.d("TOLGO $nBaiocchi BAIOCCHI A $nomePlebeo DI CASA $casata", "ERRORE SCONOSCIUTO")
+        return false
+    }
+
     // inserisce un nuovo Plebeo con nome nome, casata casata e con un numero di Baiocchi pari a nBaiocchi.
     // restituisce false non sono stati passati input validi.
     // restituisce true in caso di corretto inserimento.
