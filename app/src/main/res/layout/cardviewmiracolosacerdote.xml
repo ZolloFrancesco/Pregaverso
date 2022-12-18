@@ -32,20 +32,20 @@
 
                     <!-- TEXT VIEW -->
                     <TextView
-                        android:id="@+id/descrMiracolo"
-                        android:text="Benedizione Cutanea"
-                        android:maxLength="23"
+                        android:id="@+id/descrMiracoloSacerdote"
                         android:layout_width="wrap_content"
-                        android:padding="10sp"
-                        android:textSize="25sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
+                        android:layout_height="wrap_content"
                         android:fontFamily="@font/medievalsharp"
-                        android:layout_height="wrap_content"/>
+                        android:maxLength="23"
+                        android:padding="10sp"
+                        android:text="Benedizione Cutanea"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
 
 
                     <TextView
-                        android:id="@+id/nomeSanto"
+                        android:id="@+id/nomeSantoSacerdote"
                         android:text="San paorolento"
                         android:padding="10sp"
                         android:textSize="20sp"
@@ -75,7 +75,7 @@
                         android:layout_gravity="center"
                         android:padding="0sp" />
                     <TextView
-                        android:id="@+id/nBaiocchi"
+                        android:id="@+id/nBaiocchiSacerdote"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="100"
@@ -98,12 +98,13 @@
 
                 <!-- IMAGE VIEW -->
                 <ImageView
-                    android:id="@+id/frecciaDescrizione"
+                    android:id="@+id/frecciaDescrizioneSacerdote"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@drawable/freccia"/>
 
                 <TextView
+                    android:id="@+id/intDescrizioneSacerdote"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
@@ -116,7 +117,7 @@
 
                 <!-- TEXT VIEW -->
                 <TextView
-                    android:id="@+id/testoMiracolo"
+                    android:id="@+id/testoMiracoloSacerdote"
                     android:layout_width="match_parent"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -134,13 +135,14 @@
 
                 <!-- IMAGE VIEW -->
                 <ImageView
-                    android:id="@+id/frecciaCommenti"
+                    android:id="@+id/frecciaCommentiSacerdote"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@drawable/freccia"/>
 
                 <!-- TEXT VIEW -->
                 <TextView
+                    android:id="@+id/intCommSacerdote"
                     android:layout_width="match_parent"
                     android:textColor="@color/black"
                     android:textSize="25sp"
@@ -152,7 +154,7 @@
 
                 <!-- TEXT VIEW -->
                 <TextView
-                    android:id="@+id/commentiMiracolo"
+                    android:id="@+id/commentiMiracoloSacerdote"
                     android:layout_width="match_parent"
                     android:textColor="@color/black"
                     android:textSize="15sp"
