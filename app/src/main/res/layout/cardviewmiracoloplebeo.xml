@@ -32,7 +32,7 @@
 
                     <!-- TEXT VIEW -->
                     <TextView
-                        android:id="@+id/descrMiracolo"
+                        android:id="@+id/descrMiracoloPlebeo"
                         android:text="Benedizione Cutanea"
                         android:maxLength="23"
                         android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
                         android:layout_height="wrap_content"/>
 
                     <TextView
-                        android:id="@+id/nomeSanto"
+                        android:id="@+id/nomeSantoPlebeo"
                         android:text="San paorolento"
                         android:padding="10sp"
                         android:textSize="20sp"
@@ -65,7 +65,6 @@
 
                     <!-- TEXT VIEW -->
                     <ImageView
-                        android:id="@+id/nBaiocchi"
                         android:gravity="center"
                         android:layout_width="60sp"
                         android:layout_height="60sp"
@@ -73,7 +72,7 @@
                         android:layout_gravity="center"
                         android:padding="0sp" />
                     <TextView
-                        android:id="@+id/baiocchiNecessari"
+                        android:id="@+id/nBaiocchiPlebeo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="100"
@@ -96,13 +95,26 @@
 
                 <!-- IMAGE VIEW -->
                 <ImageView
+                    android:id="@+id/frecciaDescrizionePlebeo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/freccia"/>
+                    android:src="@drawable/freccia" />
 
                 <!-- TEXT VIEW -->
                 <TextView
-                    android:id="@+id/testoMiracolo"
+                    android:id="@+id/intDescrizionePlebeo"
+                    android:layout_width="match_parent"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textAlignment="center"
+                    android:padding="10sp"
+                    android:fontFamily="@font/medievalsharp"
+                    android:layout_height="wrap_content"
+                    android:text="Commenti"/>
+
+                <!-- TEXT VIEW -->
+                <TextView
+                    android:id="@+id/testoMiracoloPlebeo"
                     android:layout_width="match_parent"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -112,7 +124,7 @@
                     android:text="Qui ci sta la descrizione del funzionamento del miracolo ed eventuali altre spiegazioni utili al funzionamento dello stesso."/>
 
                 <Button
-                    android:id="@+id/btnCompra"
+                    android:id="@+id/btnCompraPlebeo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="compra miracolo"/>
@@ -126,12 +138,14 @@
 
                 <!-- IMAGE VIEW -->
                 <ImageView
+                    android:id="@+id/frecciaCommentiPlebeo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/freccia"/>
+                    android:src="@drawable/freccia" />
 
                 <!-- TEXT VIEW -->
                 <TextView
+                    android:id="@+id/intCommPlebeo"
                     android:layout_width="match_parent"
                     android:textColor="@color/black"
                     android:textSize="25sp"
@@ -143,7 +157,7 @@
 
                 <!-- TEXT VIEW -->
                 <TextView
-                    android:id="@+id/commentiMiracolo"
+                    android:id="@+id/commentiMiracoloPlebeo"
                     android:layout_width="match_parent"
                     android:textColor="@color/black"
                     android:textSize="15sp"
