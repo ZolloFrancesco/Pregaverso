@@ -131,4 +131,9 @@ class HomeSacerdote : AppCompatActivity() {
 
         }
     }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        Log.d("NON SI PUO'","FREGATO")
+    }
 }

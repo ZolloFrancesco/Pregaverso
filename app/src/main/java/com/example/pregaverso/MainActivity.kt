@@ -85,6 +85,12 @@ class MainActivity : AppCompatActivity() {
             alette.visibility = VISIBLE
             titolo.visibility = VISIBLE
         }
+
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        Log.d("NON SI PUO'","FREGATO")
     }
 
 }
