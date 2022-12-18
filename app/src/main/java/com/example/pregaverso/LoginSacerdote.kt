@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import kotlinx.android.synthetic.main.loginsacerdote.*
@@ -46,9 +47,8 @@ class LoginSacerdote : AppCompatActivity() {
 
             // inputValidi vale true se non ho alcun tipo di problema con gli input
             if (ts.testRegistrazione(nome, parola, conf)) {
-
+                btnProcedi.textAlignment = View.TEXT_ALIGNMENT_CENTER
                 if (!db.testUtente(nome, diocesi, parola)) {
-                    btnProcedi.textAlignment = View.TEXT_ALIGNMENT_CENTER
                     btnProcedi.text = "Benvenuto, Padre."
 
                     popupReg.show()
@@ -60,7 +60,6 @@ class LoginSacerdote : AppCompatActivity() {
                         startActivity(Intent(this@LoginSacerdote, HomeSacerdote::class.java))
                     }
                 } else{
-                    btnProcedi.textAlignment = View.TEXT_ALIGNMENT_CENTER
                     btnProcedi.text = "Bentornato, Padre."
 
                     popupReg.show()
@@ -69,7 +68,6 @@ class LoginSacerdote : AppCompatActivity() {
                         popupReg.dismiss()
                         startActivity(Intent(this@LoginSacerdote, HomeSacerdote::class.java))
                     },1000)
-
                 }
 
             }
