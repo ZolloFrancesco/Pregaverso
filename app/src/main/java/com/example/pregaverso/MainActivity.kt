@@ -80,8 +80,10 @@ class MainActivity : AppCompatActivity() {
         btnSkip.setOnClickListener {
             btnSkip.startAnimation(bounce)
             testoStoria.startAnimation(fadeOut)
-            testoStoria.setTextColor(getResources().getColor(R.color.black,this.theme))
-            bottoneEntra.visibility= VISIBLE
+            testoStoria.setTextColor(resources.getColor(R.color.black,this.theme))
+            bottoneEntra.visibility = VISIBLE
+            alette.visibility = VISIBLE
+            titolo.visibility = VISIBLE
         }
     }
 
