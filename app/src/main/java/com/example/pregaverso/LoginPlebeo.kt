@@ -35,7 +35,7 @@ class LoginPlebeo : AppCompatActivity() {
 
             // prendo username, password, conferma inseriti da tastiera
             val nome = nomeSacerdote.text.toString()
-            val diocesi = diocesiSacerdote.text.toString()
+            val casata = diocesiSacerdote.text.toString()
             val parola = parolaSacerdote.text.toString()
             val conf = parola
 
@@ -48,20 +48,25 @@ class LoginPlebeo : AppCompatActivity() {
             // inputValidi vale true se non ho alcun tipo di problema con gli input
             if (ts.testRegistrazione(nome, parola, conf)) {
 
-                if (!db.testUtente(nome, diocesi, parola)) {
-
-                    btnProcedi.setText("Registrazione \n Completata")
+                if (!db.testUtente(nome, casata, parola)) {
+                    btnProcedi.textAlignment = View.TEXT_ALIGNMENT_CENTER
+                    btnProcedi.text = "Benvenuto a un nuovo pezzente."
 
                     popupReg.show()
 
-                    db.aggiungiCredenziali(nome, diocesi, parola)
+                    db.aggiungiCredenziali(nome, casata, parola)
+
+                    plebeoCorrente.nome = nome
+                    plebeoCorrente.casata = casata
 
                     btnProcedi.setOnClickListener {
                         startActivity(Intent(this@LoginPlebeo, HomePlebeo::class.java))
                     }
 
+                } else{
+                    btnProcedi.textAlignment = View.TEXT_ALIGNMENT_CENTER
+                    btnProcedi.text = "Bentornato, pezzente."
                 }
-
             }
             // altrimenti ho avuto qualche problema in input,
             // quindi cerco il problema e modifico il messaggio
@@ -118,9 +123,14 @@ class LoginPlebeo : AppCompatActivity() {
                         messaggio += "- Onnipotenzo ha bandito i secondi nomi"
                     }
                 }
-                btnProcedi.setText(messaggio)
+                btnProcedi.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+                btnProcedi.text = messaggio
 
                 popupReg.show()
+
+                btnProcedi.setOnClickListener {
+                    popupReg.dismiss()
+                }
 
             }
         }
