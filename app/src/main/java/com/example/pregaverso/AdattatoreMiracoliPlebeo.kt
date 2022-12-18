@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -42,6 +43,9 @@ class AdattatoreMiracoliPlebeo(var miracoli : ArrayList<Miracolo>, private val c
         var frecciaDescr = itemView.findViewById(R.id.frecciaDescrizionePlebeo) as ImageView
         var frecciaComm = itemView.findViewById(R.id.frecciaCommentiPlebeo) as ImageView
 
+        var bottoneCompra = itemView.findViewById(R.id.btnCompraPlebeo) as Button
+
+
         override fun onClick(v: View?) {
             TODO("Not yet implemented")
         }
@@ -61,7 +65,6 @@ class AdattatoreMiracoliPlebeo(var miracoli : ArrayList<Miracolo>, private val c
                 testo.visibility = View.GONE
             }
 
-
             val commDb = db.prendiCommento(miracolo.descr,miracolo.nomeSanto)
 
             if(commDb.size == 0){
@@ -69,13 +72,22 @@ class AdattatoreMiracoliPlebeo(var miracoli : ArrayList<Miracolo>, private val c
                 titcom.visibility = View.GONE
                 commenti.visibility = View.GONE
             } else{
-                var risultato = "0 - commento di test\n"
+                var risultato = ""
 
                 for(i in 0 until commDb.size){
                     risultato += "$i - ${commDb[i]}\n"
                 }
 
                 commenti.text = risultato
+            }
+
+            bottoneCompra.setOnClickListener {
+                if(plebeoCorrente.baiocchi > costo.text.toString().toInt()){
+                    db.eliminaMiracolo(descrMiracolo.text.toString(),nomeSanto.text.toString())
+                    plebeoCorrente.togliBaiocchi(costo.text.toString().toInt(),context)
+                    cancellaByPosition(adapterPosition)
+                    notifyItemRemoved(adapterPosition)
+                }
             }
         }
 
