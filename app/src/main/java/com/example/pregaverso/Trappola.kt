@@ -11,6 +11,8 @@ class Trappola : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.trappola)
 
+        overridePendingTransition(R.anim.fade_out,R.anim.fade_in)
+
         // nascondo la ActionBar per estetica
         supportActionBar?.hide()
     }

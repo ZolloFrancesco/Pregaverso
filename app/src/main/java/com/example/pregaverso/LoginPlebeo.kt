@@ -20,6 +20,8 @@ class LoginPlebeo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.loginplebeo)
 
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
+
         supportActionBar?.hide()
 
         val bounce = AnimationUtils.loadAnimation(applicationContext, R.anim.bounce)
@@ -45,6 +47,10 @@ class LoginPlebeo : AppCompatActivity() {
             val popupBuilder: AlertDialog.Builder? = AlertDialog.Builder(this).setView(viewPopup)
             val popupReg: AlertDialog = popupBuilder!!.create()
 
+            plebeoCorrente.nome = nome
+            plebeoCorrente.casata = casata
+            plebeoCorrente.baiocchi = intent.getIntExtra("baiocchiPassati",0)
+
             // inputValidi vale true se non ho alcun tipo di problema con gli input
             if (ts.testRegistrazione(nome, parola, conf)) {
 
@@ -55,9 +61,6 @@ class LoginPlebeo : AppCompatActivity() {
                     popupReg.show()
 
                     db.aggiungiCredenziali(nome, casata, parola)
-
-                    plebeoCorrente.nome = nome
-                    plebeoCorrente.casata = casata
 
                     btnProcedi.setOnClickListener {
                         startActivity(Intent(this@LoginPlebeo, HomePlebeo::class.java)
@@ -71,7 +74,8 @@ class LoginPlebeo : AppCompatActivity() {
 
                     btnProcedi.postDelayed({
                         popupReg.dismiss()
-                        startActivity(Intent(this@LoginPlebeo, HomePlebeo::class.java))
+                        startActivity(Intent(this@LoginPlebeo, HomePlebeo::class.java)
+                            .putExtra("baiocchiPassati",intent.getIntExtra("baiocchiPassati",0)))
                     },1000)
                 }
             }

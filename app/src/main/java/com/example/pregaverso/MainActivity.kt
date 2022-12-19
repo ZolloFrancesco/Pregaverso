@@ -16,10 +16,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activitymain)
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
 
         val fadeIn = AnimationUtils.loadAnimation(applicationContext,R.anim.fade_in)
         val fadeOut = AnimationUtils.loadAnimation(applicationContext,R.anim.fade_out)
         val bounce = AnimationUtils.loadAnimation(applicationContext,R.anim.bounce)
+
 
         // service
         startService(Intent(this,ServizioSottofondo::class.java))
