@@ -52,13 +52,13 @@ class HomePlebeo : AppCompatActivity() {
         dialogBuilder = AlertDialog.Builder(this).setView(view)
         dialog = dialogBuilder!!.create()
         dialog.show()
+
         btnGiura.setOnClickListener {
                 dialog!!.dismiss()
                 if(inseritiTrappola.text.toString().toInt() != intent.getIntExtra("baiocchiPassati",0)) {
                     startActivity(Intent(this@HomePlebeo, Trappola::class.java))
                 }
         }
-
 
     }
 
