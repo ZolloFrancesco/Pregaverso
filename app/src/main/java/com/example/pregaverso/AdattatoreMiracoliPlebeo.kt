@@ -43,7 +43,7 @@ class AdattatoreMiracoliPlebeo(var miracoli : ArrayList<Miracolo>, private val c
         var frecciaDescr = itemView.findViewById(R.id.frecciaDescrizionePlebeo) as ImageView
         var frecciaComm = itemView.findViewById(R.id.frecciaCommentiPlebeo) as ImageView
 
-        var bottoneCompra = itemView.findViewById(R.id.btnCompraPlebeo) as Button
+        var bottoneCompra = itemView.findViewById(R.id.btnCompraPlebeo) as TextView
 
 
         override fun onClick(v: View?) {
