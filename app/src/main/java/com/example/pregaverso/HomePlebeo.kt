@@ -38,15 +38,18 @@ class HomePlebeo : AppCompatActivity() {
         val dialog: AlertDialog?
         val view = LayoutInflater.from(this).inflate(R.layout.popuptrappola, null, false)
         val btnGiura = view.btnGiura
+        val inseritiTrappola = view.bugiaTrappola
         dialogBuilder = AlertDialog.Builder(this).setView(view)
         dialog = dialogBuilder!!.create()
         dialog.show()
         btnGiura.setOnClickListener {
                 dialog!!.dismiss()
-                //if(bugiaTrappola.text.toString().toInt() != baiocchiPassati){
+                if(inseritiTrappola.text.toString().toInt() != intent.getIntExtra("baiocchiPassati",0)) {
                     startActivity(Intent(this@HomePlebeo, Trappola::class.java))
-                //}
-            }
+                }
+        }
+
+
     }
 
     @Deprecated("Deprecated in Java")
