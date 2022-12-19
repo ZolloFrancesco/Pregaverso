@@ -66,6 +66,12 @@ class LoginPlebeo : AppCompatActivity() {
                 } else{
                     btnProcedi.textAlignment = View.TEXT_ALIGNMENT_CENTER
                     btnProcedi.text = "Bentornato, pezzente."
+                    popupReg.show()
+
+                    btnProcedi.postDelayed({
+                        popupReg.dismiss()
+                        startActivity(Intent(this@LoginPlebeo, HomePlebeo::class.java))
+                    },1000)
                 }
             }
             // altrimenti ho avuto qualche problema in input,
