@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:hint="quanti baiocchi vi hadato il plebeo?"
+        android:hint="quanti baiocchi vi ha dato il plebeo?"
         android:fontFamily="@font/medievalsharp"
         android:textColorHint="#B9676767"
         android:textColor="@color/black"
