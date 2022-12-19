@@ -17,6 +17,8 @@ class HomePlebeo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.homeplebeo)
 
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
+
         // nascondo la ActionBar per estetica
         supportActionBar?.hide()
 
