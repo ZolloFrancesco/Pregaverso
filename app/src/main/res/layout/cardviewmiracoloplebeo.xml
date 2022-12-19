@@ -123,11 +123,21 @@
                     android:layout_height="wrap_content"
                     android:text="Qui ci sta la descrizione del funzionamento del miracolo ed eventuali altre spiegazioni utili al funzionamento dello stesso."/>
 
-                <Button
+                <TextView
                     android:id="@+id/btnCompraPlebeo"
                     android:layout_width="match_parent"
+                    android:background="@drawable/bottone1"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:fontFamily="@font/medievalsharp"
+                    android:clickable="true"
+                    android:scaleX="0.8"
+                    android:textColor="@color/white"
+                    android:scaleY="0.8"
+                    android:textSize="35sp"
                     android:layout_height="wrap_content"
-                    android:text="compra miracolo"/>
+                    android:text="Compra"
+                    android:focusable="true" />
             </LinearLayout>
 
             <!-- LINEAR LAYOUT 1 -->

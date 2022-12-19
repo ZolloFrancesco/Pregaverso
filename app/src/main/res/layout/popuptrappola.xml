@@ -22,14 +22,25 @@
         android:layout_height="match_parent"
         android:padding="20sp"
         android:textColor="@color/black"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:autofillHints="" />
 
-    <Button
+    <TextView
         android:id="@+id/btnGiura"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="giura"/>
+        android:background="@drawable/bottone1"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:fontFamily="@font/medievalsharp"
+        android:clickable="true"
+        android:scaleX="0.8"
+        android:textColor="@color/white"
+        android:scaleY="0.8"
+        android:textSize="35sp"
+        android:text="Giura"
+        android:focusable="true" />
 
 
 </LinearLayout>

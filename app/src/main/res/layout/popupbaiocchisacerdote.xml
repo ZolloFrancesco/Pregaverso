@@ -13,15 +13,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:hint="quanti baiocchi vi ha dato il pezzente?"
+        android:hint="quanti baiocchi vi hadato il plebeo?"
         android:fontFamily="@font/medievalsharp"
+        android:textColorHint="#B9676767"
+        android:textColor="@color/black"
         android:autofillHints="" />
 
-    <Button
+    <TextView
         android:id="@+id/btnConferma"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="salva"/>
+        android:background="@drawable/bottone1"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:fontFamily="@font/medievalsharp"
+        android:clickable="true"
+        android:scaleX="0.8"
+        android:textColor="@color/white"
+        android:scaleY="0.8"
+        android:textSize="35sp"
+        android:text="Salva"
+        android:focusable="true" />
 
 
 </LinearLayout>
