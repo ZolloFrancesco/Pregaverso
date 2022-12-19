@@ -23,6 +23,14 @@ class HomePlebeo : AppCompatActivity() {
         // dichiaro un handler per database per eseguire le operazioni messe a disposizione
         val db = Database(this)
 
+        floatBaiocchi.text = intent.getIntExtra("baiocchiPassati",0).toString()
+
+        for(i in 0 until (intent.getIntExtra("baiocchiPassati",0)/2).toInt()){
+            floatBaiocchi.postDelayed({
+                floatBaiocchi.text = (floatBaiocchi.text.toString().toInt() - 1).toString()
+            },500)
+        }
+
         // dichiaro un array di task
         val listaMiracoli = db.prendiMiracoli()
 
