@@ -60,7 +60,8 @@ class LoginPlebeo : AppCompatActivity() {
                     plebeoCorrente.casata = casata
 
                     btnProcedi.setOnClickListener {
-                        startActivity(Intent(this@LoginPlebeo, HomePlebeo::class.java))
+                        startActivity(Intent(this@LoginPlebeo, HomePlebeo::class.java)
+                            .putExtra("baiocchiPassati",intent.getIntExtra("baiocchiPassati",0)))
                     }
 
                 } else{
@@ -137,11 +138,8 @@ class LoginPlebeo : AppCompatActivity() {
                 btnProcedi.setOnClickListener {
                     popupReg.dismiss()
                 }
-
             }
         }
-
-
     }
 
     @Deprecated("Deprecated in Java")
