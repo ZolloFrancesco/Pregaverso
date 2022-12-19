@@ -31,7 +31,6 @@
         android:focusable="true"
         app:layout_constraintTop_toBottomOf="@id/guidaTesto"/>
 
-
     <!-- PULSANTE SKIP -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidaSkip1"
@@ -96,8 +95,6 @@
         app:layout_constraintEnd_toStartOf="@id/guidaBottone2"
         android:background="@drawable/bottonegiallo"
         android:focusable="true" />
-
-
 
     <!-- ALETTE E TITOLO -->
     <androidx.constraintlayout.widget.Guideline
