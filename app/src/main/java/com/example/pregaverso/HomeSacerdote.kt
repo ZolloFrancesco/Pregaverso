@@ -108,25 +108,25 @@ class HomeSacerdote : AppCompatActivity() {
                 popup.show()
 
                 val btnConferma = viewPopup.btnConferma
+                val inseriti = viewPopup.nBaiocchiInseriti
 
                 btnConferma.setOnClickListener {
                     popup.dismiss()
                     /*
-                    if(nBaiocchiInseriti.text.toString().toInt() < 0){
+                    if(inseriti.text.toString().toInt() < 0){
                         btnConferma.text = ""
                         btnConferma.hint = "calmo, padre."
-                    } else if(nBaiocchiInseriti.text.toString().toInt() > 80){
+                    } else if(inseriti.text.toString().toInt() > 80){
 
                         btnConferma.text = ""
-                        btnConferma.hint = "forse intendete ${(nBaiocchiInseriti.text.toString().toInt()%10)}?"
+                        btnConferma.hint = "forse intendete ${(inseriti.text.toString().toInt()%10)}?"
                     } else
 
                      */
-                    //baiocchiPassati = nBaiocchiInseriti.text.toString().toInt()
-                    startActivity(Intent(this@HomeSacerdote, LoginPlebeo::class.java))
+                    //baiocchiPassati = inseriti.text.toString().toInt()
+                    startActivity(Intent(this@HomeSacerdote, LoginPlebeo::class.java).putExtra("baiocchiPassati",inseriti.text.toString().toInt()))
                 }
             }
-
         }
     }
 
