@@ -83,42 +83,42 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
 
     override fun onCreate(db: SQLiteDatabase?) {
 
-        var comando = "CREATE TABLE $NOME_TABELLA_PLEBEI ($PLEBEI_NOME TEXT , $PLEBEI_CASATA TEXT ,  $PLEBEI_BAIOCCHI INTEGER, PRIMARY KEY($PLEBEI_NOME,$PLEBEI_CASATA))"
+        var comando = "CREATE TABLE $N_T_P ($P_NOME TEXT , $P_CASATA TEXT ,  $P_BAIOCCHI INTEGER, PRIMARY KEY($P_NOME,$P_CASATA))"
         db?.execSQL(comando)
         Log.d("CREATA TABELLA PLEBEI","SUCCESSO")
 
-        comando = "CREATE TABLE $NOME_TABELLA_SACERDOTI ($SACERDOTI_NOME TEXT, $SACERDOTI_DIOCESI TEXT, PRIMARY KEY($SACERDOTI_NOME,$SACERDOTI_DIOCESI))"
+        comando = "CREATE TABLE $N_T_S ($S_NOME TEXT, $S_DIOCESI TEXT, PRIMARY KEY($S_NOME,$S_DIOCESI))"
         db?.execSQL(comando)
         Log.d("CREATA TABELLA SACERDOTI","SUCCESSO")
 
-        comando = "CREATE TABLE $NOME_TABELLA_MIRACOLI ($MIRACOLI_DESCRIZIONE TEXT, $MIRACOLI_NOMESANTO TEXT, $MIRACOLI_COSTO INTEGER, $MIRACOLI_TESTO  TEXT, PRIMARY KEY($MIRACOLI_DESCRIZIONE,$MIRACOLI_NOMESANTO))"
+        comando = "CREATE TABLE $N_T_M ($M_DESC TEXT, $M_NOMESANTO TEXT, $M_COSTO INTEGER, $M_TESTO  TEXT, PRIMARY KEY($M_DESC,$M_NOMESANTO))"
         db?.execSQL(comando)
         Log.d("CREATA TABELLA MIRACOLI","SUCCESSO")
 
-        comando = "CREATE TABLE $NOME_TABELLA_COMMENTIMIRACOLI ($COMMENTIMIRACOLI_DESCRIZIONE TEXT, $COMMENTIMIRACOLI_NOMESANTO TEXT,  $COMMENTIMIRACOLI_COMMENTO TEXT)"
+        comando = "CREATE TABLE $N_T_C ($C_DESC TEXT, $C_NOMESANTO TEXT,  $C_COMM TEXT, FOREIGN KEY($C_DESC) REFERENCES $N_T_M($M_DESC), FOREIGN KEY($C_NOMESANTO) REFERENCES $N_T_M($M_NOMESANTO))"
         db?.execSQL(comando)
         Log.d("CREATA TABELLA COMMENTIMIRACOLI","SUCCESSO")
 
-        comando = "CREATE TABLE $NOME_TABELLA_LOGIN ($LOGIN_NOME TEXT, $LOGIN_CASATADIOCESI TEXT,  $LOGIN_PAROLADORDINE , PRIMARY KEY($LOGIN_NOME,$LOGIN_CASATADIOCESI,$LOGIN_PAROLADORDINE))"
+        comando = "CREATE TABLE $N_T_L ($L_NOME TEXT, $L_CASADIO TEXT,  $L_PORDINE , PRIMARY KEY($L_NOME,$L_CASADIO,$L_PORDINE))"
         db?.execSQL(comando)
         Log.d("CREATA TABELLA LOGIN","SUCCESSO")
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
 
-        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_PLEBEI")
+        db?.execSQL("DROP TABLE IF EXISTS $N_T_P")
         Log.d("ELIMINAZIONE TABELLA LOGIN","SUCCESSO")
 
-        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_SACERDOTI")
+        db?.execSQL("DROP TABLE IF EXISTS $N_T_S")
         Log.d("ELIMINAZIONE TABELLA SACERDOTI","SUCCESSO")
 
-        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_MIRACOLI")
+        db?.execSQL("DROP TABLE IF EXISTS $N_T_M")
         Log.d("ELIMINAZIONE TABELLA MIRACOLI","SUCCESSO")
 
-        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_COMMENTIMIRACOLI")
+        db?.execSQL("DROP TABLE IF EXISTS $N_T_C")
         Log.d("ELIMINAZIONE TABELLA COMMENTIMIRACOLI","SUCCESSO")
 
-        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_LOGIN")
+        db?.execSQL("DROP TABLE IF EXISTS $N_T_L")
         Log.d("ELIMINAZIONE TABELLA LOGIN","SUCCESSO")
 
         onCreate(db)
@@ -133,7 +133,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
 
         val listaDaRestituire : ArrayList<Plebeo> = ArrayList()
 
-        val comando = "SELECT * FROM $NOME_TABELLA_PLEBEI"
+        val comando = "SELECT * FROM $N_T_P"
         val cursore : Cursor = db.rawQuery(comando,null)
 
         if(cursore.moveToFirst()){
@@ -161,7 +161,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
 
         val listaDaRestituire : ArrayList<Sacerdote> = ArrayList()
 
-        val comando = "SELECT * FROM $NOME_TABELLA_SACERDOTI"
+        val comando = "SELECT * FROM $N_T_S"
         val cursore : Cursor = db.rawQuery(comando,null)
 
         if(cursore.moveToFirst()){
@@ -189,7 +189,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
 
         val listaDaRestituire : ArrayList<Miracolo> = ArrayList()
 
-        val comando = "SELECT * FROM $NOME_TABELLA_MIRACOLI"
+        val comando = "SELECT * FROM $N_T_M"
         val cursore : Cursor = db.rawQuery(comando, null)
 
         if (cursore.moveToFirst()) {
@@ -237,11 +237,11 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
 
         val modificato = ContentValues()
 
-        modificato.put(PLEBEI_NOME,nomePlebeo)
-        modificato.put(PLEBEI_CASATA,casata)
-        modificato.put(PLEBEI_BAIOCCHI,baiocchiVecchi + nBaiocchi)
+        modificato.put(P_NOME,nomePlebeo)
+        modificato.put(P_CASATA,casata)
+        modificato.put(P_BAIOCCHI,baiocchiVecchi + nBaiocchi)
 
-        val nModificati = db.update(NOME_TABELLA_PLEBEI, modificato, "$PLEBEI_NOME=? AND $PLEBEI_CASATA=?", arrayOf(nomePlebeo,casata))
+        val nModificati = db.update(N_T_P, modificato, "$P_NOME=? AND $P_CASATA=?", arrayOf(nomePlebeo,casata))
 
         if (nModificati == 1){
             Log.d("AGGIUNGO $nBaiocchi BAIOCCHI A $nomePlebeo DI CASA $casata", "SUCCESSO")
@@ -288,11 +288,11 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
 
         val modificato = ContentValues()
 
-        modificato.put(PLEBEI_NOME,nomePlebeo)
-        modificato.put(PLEBEI_CASATA,casata)
-        modificato.put(PLEBEI_BAIOCCHI,baiocchiVecchi - nBaiocchi)
+        modificato.put(P_NOME,nomePlebeo)
+        modificato.put(P_CASATA,casata)
+        modificato.put(P_BAIOCCHI,baiocchiVecchi - nBaiocchi)
 
-        val nModificati = db.update(NOME_TABELLA_PLEBEI, modificato, "$PLEBEI_NOME=? AND $PLEBEI_CASATA=?", arrayOf(nomePlebeo,casata))
+        val nModificati = db.update(N_T_P, modificato, "$P_NOME=? AND $P_CASATA=?", arrayOf(nomePlebeo,casata))
 
         if (nModificati == 1){
             Log.d("TOLGO $nBaiocchi BAIOCCHI A $nomePlebeo DI CASA $casata", "SUCCESSO")
@@ -325,11 +325,11 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         val db = writableDatabase
 
         val daAggiungere = ContentValues()
-        daAggiungere.put(PLEBEI_NOME,nome)
-        daAggiungere.put(PLEBEI_CASATA,casata)
-        daAggiungere.put(PLEBEI_BAIOCCHI,nBaiocchi)
+        daAggiungere.put(P_NOME,nome)
+        daAggiungere.put(P_CASATA,casata)
+        daAggiungere.put(P_BAIOCCHI,nBaiocchi)
 
-        val test = db?.insert(NOME_TABELLA_PLEBEI, null, daAggiungere)
+        val test = db?.insert(N_T_P, null, daAggiungere)
 
         if(test?.toInt() == -1){
             Log.d("INSERIMENTO DI $nome DI CASA $casata","FALLITO")
@@ -379,11 +379,11 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         val db = writableDatabase
 
         val daAggiungere = ContentValues()
-        daAggiungere.put(LOGIN_NOME, nomeUtente)
-        daAggiungere.put(LOGIN_CASATADIOCESI, casataDiocesiUtente)
-        daAggiungere.put(LOGIN_PAROLADORDINE, parolaDOrdine)
+        daAggiungere.put(L_NOME, nomeUtente)
+        daAggiungere.put(L_CASADIO, casataDiocesiUtente)
+        daAggiungere.put(L_PORDINE, parolaDOrdine)
 
-        db?.insert(NOME_TABELLA_LOGIN, null, daAggiungere)
+        db?.insert(N_T_L, null, daAggiungere)
 
         Log.d("INSERIMENTO DI $nomeUtente DI CASA/DIOCESI $casataDiocesiUtente E PAROLA D'ORDINE $parolaDOrdine","SUCCESSO")
         return true
@@ -411,11 +411,11 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
             if (listaMiracoli[contatore].descr == descrMiracolo && listaMiracoli[contatore].nomeSanto == santoMiracolo) {
 
                 val daAggiungere = ContentValues()
-                daAggiungere.put(COMMENTIMIRACOLI_DESCRIZIONE, descrMiracolo)
-                daAggiungere.put(COMMENTIMIRACOLI_NOMESANTO, santoMiracolo)
-                daAggiungere.put(COMMENTIMIRACOLI_COMMENTO, commentoMiracolo)
+                daAggiungere.put(C_DESC, descrMiracolo)
+                daAggiungere.put(C_NOMESANTO, santoMiracolo)
+                daAggiungere.put(C_COMM, commentoMiracolo)
 
-                db?.insert(NOME_TABELLA_COMMENTIMIRACOLI, null, daAggiungere)
+                db?.insert(N_T_C, null, daAggiungere)
 
                 Log.d("SUCCESSO","INSERIMENTO DI $commentoMiracolo SU MIRACOLO $descrMiracolo DI $santoMiracolo")
                 return true
@@ -434,7 +434,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
 
         val db = writableDatabase
 
-        val nRigheEliminate = db.delete(NOME_TABELLA_PLEBEI,"$PLEBEI_NOME=? AND $PLEBEI_CASATA=?", arrayOf(nome,casata))
+        val nRigheEliminate = db.delete(N_T_P,"$P_NOME=? AND $P_CASATA=?", arrayOf(nome,casata))
 
         if(nRigheEliminate == 0){
             Log.d("ELIMINO $nome DI CASA $casata","NESSUNA RIGA ELIMINATA")
@@ -457,7 +457,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
 
         val db = readableDatabase
         val commenti : ArrayList<Commento> = ArrayList()
-        val cur = db.rawQuery("SELECT * FROM $NOME_TABELLA_COMMENTIMIRACOLI", null)
+        val cur = db.rawQuery("SELECT * FROM $N_T_C", null)
         if (cur.moveToFirst()){
             do{
                 val commentoNuovo = Commento()
@@ -484,7 +484,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
     fun testUtente(nome: String, casataDiocesi: String, parolaDOrdine: String) : Boolean{
 
         val db = readableDatabase
-        val cur = db.rawQuery("SELECT * FROM $NOME_TABELLA_LOGIN", null)
+        val cur = db.rawQuery("SELECT * FROM $N_T_L", null)
         if (cur.moveToFirst()){
 
             do {
@@ -504,19 +504,19 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
     fun svuotaDatabase(){
 
         val db = writableDatabase
-        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_PLEBEI")
+        db?.execSQL("DROP TABLE IF EXISTS $N_T_P")
         Log.d("ELIMINAZIONE TABELLA LOGIN","SUCCESSO")
 
-        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_SACERDOTI")
+        db?.execSQL("DROP TABLE IF EXISTS $N_T_S")
         Log.d("ELIMINAZIONE TABELLA SACERDOTI","SUCCESSO")
 
-        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_MIRACOLI")
+        db?.execSQL("DROP TABLE IF EXISTS $N_T_M")
         Log.d("ELIMINAZIONE TABELLA MIRACOLI","SUCCESSO")
 
-        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_COMMENTIMIRACOLI")
+        db?.execSQL("DROP TABLE IF EXISTS $N_T_C")
         Log.d("ELIMINAZIONE TABELLA COMMENTIMIRACOLI","SUCCESSO")
 
-        db?.execSQL("DROP TABLE IF EXISTS $NOME_TABELLA_LOGIN")
+        db?.execSQL("DROP TABLE IF EXISTS $N_T_L")
         Log.d("ELIMINAZIONE TABELLA LOGIN","SUCCESSO")
 
         onCreate(db)
@@ -531,7 +531,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
 
         val db = writableDatabase
 
-        val nRigheEliminate = db.delete(NOME_TABELLA_SACERDOTI,"$SACERDOTI_NOME=? AND $SACERDOTI_DIOCESI=?", arrayOf(nome,diocesi))
+        val nRigheEliminate = db.delete(N_T_S,"$S_NOME=? AND $S_DIOCESI=?", arrayOf(nome,diocesi))
 
         if(nRigheEliminate == 0){
             Log.d("ELIMINO $nome SACERDOTE DI $diocesi","NESSUN SACERDOTE ELIMINATO")
@@ -560,7 +560,7 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
 
         val db = writableDatabase
 
-        val nRigheEliminate = db.delete(NOME_TABELLA_MIRACOLI,"$MIRACOLI_DESCRIZIONE=? AND $MIRACOLI_NOMESANTO=?", arrayOf(descr,nomeSanto))
+        val nRigheEliminate = db.delete(N_T_M,"$M_DESC=? AND $M_NOMESANTO=?", arrayOf(descr,nomeSanto))
 
         if(nRigheEliminate == 0){
 
@@ -584,11 +584,11 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         }
         val db = writableDatabase
         val daAggiungere = ContentValues()
-        daAggiungere.put(MIRACOLI_DESCRIZIONE, descr)
-        daAggiungere.put(MIRACOLI_NOMESANTO, nomesanto)
-        daAggiungere.put(MIRACOLI_COSTO, costo)
-        daAggiungere.put(MIRACOLI_TESTO, testo)
-        val risultato = db?.insert(NOME_TABELLA_MIRACOLI,null,daAggiungere)
+        daAggiungere.put(M_DESC, descr)
+        daAggiungere.put(M_NOMESANTO, nomesanto)
+        daAggiungere.put(M_COSTO, costo)
+        daAggiungere.put(M_TESTO, testo)
+        val risultato = db?.insert(N_T_M,null,daAggiungere)
 
         if(risultato == (-1).toLong()) return false
         return true
