@@ -15,8 +15,6 @@ import kotlinx.android.synthetic.main.popupbaiocchisacerdote.*
 import kotlinx.android.synthetic.main.popupbaiocchisacerdote.view.*
 import kotlinx.android.synthetic.main.popupinserimentomiracolo.view.*
 
-var baiocchiPassati : Int = 0
-
 class HomeSacerdote : AppCompatActivity() {
     @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
