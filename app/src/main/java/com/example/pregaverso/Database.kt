@@ -129,6 +129,20 @@ class Database(context : Context) : SQLiteOpenHelper(context ,NOME_DATABASE, nul
         Log.d("CREAZIONE DATABASE","SUCCESSO")
     }
 
+    fun carica(){
+        aggiungiMiracoli("Pani per tutti","San Dwich",10,"Vi sentite stanchi ed affamati? Acquistate Pani per tutti, garantisce pani, panini e schiacciate direttamente a casa vostra")
+        aggiungiMiracoli("Resurrecto mortuourm","Sant'Erellina",5,"")
+        aggiungiMiracoli("ProntoDivino","San Sung",40,"Basta un soffio per connettersi con il Divino")
+        aggiungiMiracoli("In vino veritas","San Dionisio",20,"")
+        aggiungiMiracoli("BluMirtillo","Santa Bacca",35,"Se bella vuoi diventare BluMirtillo devi provare. Un incarnato celestiale per una bellezza ineguale")
+
+        aggiungiCommento("Pani per tutti","San Dwich","Pessimo prodotto, ho la casa infastata da cani, bambini e manate")
+        aggiungiCommento("Pani per tutti","San Dwich","Sconsigliato, invece di mangiare un panino ho addentato un barboncino")
+        aggiungiCommento("Resurrecto mortuourm","Sant'Erellina","Ottimo acquisto, posso finalmente conoscere il Maestro di Providence")
+        aggiungiCommento("Resurrecto mortuourm","Sant'Erellina","Terrificante, sono perseguitato da Ivano il Cannibale")
+        aggiungiCommento("ProntoDivino","San Sung","Sarebbe un ottimo acquisto se non contattassi il Divino ad ogni scurzino")
+    }
+
     // Restituisce la lista di tutti i Plebei presenti al momento della chiamata all'interno del Database.
     // Se non ci sono Plebei, restituisce una lista di Plebei vuota.
     fun prendiPlebei() : ArrayList<Plebeo>{
