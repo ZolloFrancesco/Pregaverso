@@ -20,8 +20,10 @@ public class ServizioSottofondo extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
         mediap = MediaPlayer.create(this, R.raw.sottofondostoria);
-        mediap.setLooping(true);
-        mediap.start();
+        if(!mediap.isPlaying()){
+            mediap.setLooping(true);
+            mediap.start();
+        }
         return super.onStartCommand(intent,flags,startId);
     }
 

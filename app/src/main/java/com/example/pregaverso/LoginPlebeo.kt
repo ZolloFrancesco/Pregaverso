@@ -4,16 +4,23 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_login_sacerdote.*
-import kotlinx.android.synthetic.main.popupregsacerdote.view.*
+import kotlinx.android.synthetic.main.loginsacerdote.*
+import kotlinx.android.synthetic.main.popupinformativo.view.*
+
+var plebeoCorrente = Plebeo()
+
 
 class LoginPlebeo : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.loginplebeo)
+
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
 
         supportActionBar?.hide()
 
@@ -30,33 +37,47 @@ class LoginPlebeo : AppCompatActivity() {
 
             // prendo username, password, conferma inseriti da tastiera
             val nome = nomeSacerdote.text.toString()
-            val diocesi = diocesiSacerdote.text.toString()
+            val casata = diocesiSacerdote.text.toString()
             val parola = parolaSacerdote.text.toString()
             val conf = parola
 
-            val viewPopup = layoutInflater.inflate(R.layout.popupregsacerdote, null)
+            val viewPopup = layoutInflater.inflate(R.layout.popupinformativo, null)
             val btnProcedi = viewPopup.btnprocedi
 
             val popupBuilder: AlertDialog.Builder? = AlertDialog.Builder(this).setView(viewPopup)
             val popupReg: AlertDialog = popupBuilder!!.create()
 
+            plebeoCorrente.nome = nome
+            plebeoCorrente.casata = casata
+            plebeoCorrente.baiocchi = intent.getIntExtra("baiocchiPassati",0)
+
             // inputValidi vale true se non ho alcun tipo di problema con gli input
             if (ts.testRegistrazione(nome, parola, conf)) {
 
-                if (!db.testUtente(nome, diocesi, parola)) {
-
-                    btnProcedi.setText("Registrazione \n Completata")
+                if (!db.testUtente(nome, casata, parola)) {
+                    btnProcedi.textAlignment = View.TEXT_ALIGNMENT_CENTER
+                    btnProcedi.text = "Benvenuto a un nuovo pezzente."
 
                     popupReg.show()
 
-                    db.aggiungiCredenziali(nome, diocesi, parola)
+                    db.aggiungiCredenziali(nome, casata, parola)
 
                     btnProcedi.setOnClickListener {
-                        startActivity(Intent(this@LoginPlebeo, HomePlebeo::class.java))
+                        startActivity(Intent(this@LoginPlebeo, HomePlebeo::class.java)
+                            .putExtra("baiocchiPassati",intent.getIntExtra("baiocchiPassati",0)))
                     }
 
-                }
+                } else{
+                    btnProcedi.textAlignment = View.TEXT_ALIGNMENT_CENTER
+                    btnProcedi.text = "Bentornato, pezzente."
+                    popupReg.show()
 
+                    btnProcedi.postDelayed({
+                        popupReg.dismiss()
+                        startActivity(Intent(this@LoginPlebeo, HomePlebeo::class.java)
+                            .putExtra("baiocchiPassati",intent.getIntExtra("baiocchiPassati",0)))
+                    },1000)
+                }
             }
             // altrimenti ho avuto qualche problema in input,
             // quindi cerco il problema e modifico il messaggio
@@ -113,11 +134,20 @@ class LoginPlebeo : AppCompatActivity() {
                         messaggio += "- Onnipotenzo ha bandito i secondi nomi"
                     }
                 }
-                btnProcedi.setText(messaggio)
+                btnProcedi.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+                btnProcedi.text = messaggio
 
                 popupReg.show()
 
+                btnProcedi.setOnClickListener {
+                    popupReg.dismiss()
+                }
             }
         }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        Log.d("NON SI PUO'","FREGATO")
     }
 }

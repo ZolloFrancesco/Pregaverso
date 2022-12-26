@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".Trappola">
+
+    <!-- SACERDOTE -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidaSacerdoteArrabbiato"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.09" />
+
+    <ImageView
+        android:layout_width="600sp"
+        android:layout_height="600sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guidaSacerdoteArrabbiato"
+        android:src="@drawable/sacarrabbiato"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidaTrappola1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidaTrappola2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/medievalsharp"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@id/guidaTrappola2"
+        app:layout_constraintEnd_toEndOf="@id/guidaTrappola1"
+        app:layout_constraintStart_toEndOf="@id/guidaSacerdoteArrabbiato"
+        android:text="Non lo sai che le bugie portano al demonio, pezzente?"
+        android:textColor="@color/white"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

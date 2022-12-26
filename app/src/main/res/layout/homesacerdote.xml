@@ -22,7 +22,7 @@
     -->
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerViewSacerdote"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:nestedScrollingEnabled="true"
@@ -39,6 +39,7 @@
         android:layout_marginBottom="10dp"
         android:backgroundTint="#6E4C19"
         android:src="@drawable/croce"
+        app:borderWidth="0sp"
         app:fabSize="normal"
         tools:ignore="ContentDescription" />
 
@@ -46,14 +47,15 @@
         android:id="@+id/btnLoginPlebeo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/cacca"
-        android:src="@drawable/cacca"
-        app:fabSize="normal"
         android:backgroundTint="#6E4C19"
+        android:src="@drawable/omino"
+        app:borderWidth="0sp"
+        app:fabSize="normal"
+        app:maxImageSize="45sp"
         tools:ignore="ContentDescription" />
 
 </RelativeLayout>

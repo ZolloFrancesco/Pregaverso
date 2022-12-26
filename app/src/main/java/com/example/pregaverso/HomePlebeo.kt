@@ -4,25 +4,20 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.animation.AnimationUtils
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.cardviewmiracoliplebeo.*
-import kotlinx.android.synthetic.main.home_sacerdote.*
 import kotlinx.android.synthetic.main.homeplebeo.*
-import kotlinx.android.synthetic.main.popupbaiocchisacerdote.*
-import kotlinx.android.synthetic.main.popupbaiocchisacerdote.view.*
 import kotlinx.android.synthetic.main.popupinserimentomiracolo.view.*
-
-var plebeoCorrente = Plebeo()
+import kotlinx.android.synthetic.main.popuptrappola.*
+import kotlinx.android.synthetic.main.popuptrappola.view.*
 
 class HomePlebeo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.homeplebeo)
+
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
 
         // nascondo la ActionBar per estetica
         supportActionBar?.hide()
@@ -30,28 +25,45 @@ class HomePlebeo : AppCompatActivity() {
         // dichiaro un handler per database per eseguire le operazioni messe a disposizione
         val db = Database(this)
 
+        floatBaiocchi.text = intent.getIntExtra("baiocchiPassati",0).toString()
+
+        for(i in 0 until (intent.getIntExtra("baiocchiPassati",0)/2).toInt()){
+            floatBaiocchi.postDelayed({
+                floatBaiocchi.text = (floatBaiocchi.text.toString().toInt() - 1).toString()
+            },500)
+        }
+
         // dichiaro un array di task
         val listaMiracoli = db.prendiMiracoli()
 
         // dichiaro un adapter che gestisce la visualizzazione di todoListItem
         val adapter = AdattatoreMiracoliPlebeo(listaMiracoli, this)
-        recyclerView.adapter = adapter
+        recyclerViewPlebeo.adapter = adapter
 
         // dichiaro un LinearLayoutManager
         val layoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = layoutManager
+        recyclerViewPlebeo.layoutManager = layoutManager
 
-        btnCompra.setOnClickListener {
+        val dialogBuilder: AlertDialog.Builder?
+        val dialog: AlertDialog?
+        val view = LayoutInflater.from(this).inflate(R.layout.popuptrappola, null, false)
+        val btnGiura = view.btnGiura
+        val inseritiTrappola = view.bugiaTrappola
+        dialogBuilder = AlertDialog.Builder(this).setView(view)
+        dialog = dialogBuilder!!.create()
+        dialog.show()
 
-            val bounce = AnimationUtils.loadAnimation(applicationContext,R.anim.bounce)
-            btnCompra.startAnimation(bounce)
-
-            if(floatBaiocchi.text.toString().toInt() > baiocchiNecessari.text.toString().toInt()){
-                floatBaiocchi.startAnimation(bounce)
-                floatBaiocchi.text = (floatBaiocchi.text.toString().toInt() - baiocchiNecessari.text.toString().toInt()).toString()
-                //adapter.cancellaByPosition(adapter.adapterPosition)
-            }
+        btnGiura.setOnClickListener {
+                dialog!!.dismiss()
+                if(inseritiTrappola.text.toString().toInt() != intent.getIntExtra("baiocchiPassati",0)) {
+                    startActivity(Intent(this@HomePlebeo, Trappola::class.java))
+                }
         }
 
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        Log.d("NON SI PUO'","FREGATO")
     }
 }

@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:padding="10sp"
         android:fontFamily="@font/medievalsharp"
         android:text="Mezzautunno 1347"
         android:textAlignment="center"
@@ -29,7 +30,6 @@
         android:textSize="36dp"
         android:focusable="true"
         app:layout_constraintTop_toBottomOf="@id/guidaTesto"/>
-
 
     <!-- PULSANTE SKIP -->
     <androidx.constraintlayout.widget.Guideline
@@ -50,8 +50,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
         android:text="skip"
-        app:icon="@android:drawable/ic_media_ff"
-        app:iconTint="#FFFFFF"
+        android:fontFamily="@font/medievalsharp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/guidaSkip1"
         app:layout_constraintEnd_toStartOf="@id/guidaSkip2" />
@@ -63,7 +62,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.55" />
+        app:layout_constraintGuide_percent="0.90" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidaBottone2"
         android:layout_width="0dp"
@@ -83,21 +82,65 @@
         android:layout_height="wrap_content"
         android:text="Inizia"
         android:textAlignment="center"
-        android:padding="20sp"
-
-        android:shadowColor="#000000"
-        android:shadowDx="8"
-        android:shadowDy="2"
-        android:shadowRadius="1.6"
+        android:padding="10sp"
         android:visibility="gone"
+        android:textStyle="bold"
         android:textAllCaps="true"
-        android:textColor="@android:color/white"
+        android:textColor="@color/black"
         android:fontFamily="@font/medievalsharp"
         android:textSize="35sp"
         android:clickable="true"
         app:layout_constraintBottom_toTopOf="@id/guidaBottone1"
         app:layout_constraintStart_toStartOf="@id/guidaBottone3"
         app:layout_constraintEnd_toStartOf="@id/guidaBottone2"
-        android:background="@drawable/bottoneprincipale"
+        android:background="@drawable/bottonegiallo"
         android:focusable="true" />
+
+    <!-- ALETTE E TITOLO -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidaAlette1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidaAlette2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidaAlette3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <ImageView
+        android:id="@+id/alette"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:background="@drawable/ali"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/guidaAlette1"
+        app:layout_constraintStart_toStartOf="@id/guidaAlette3"
+        app:layout_constraintEnd_toStartOf="@id/guidaAlette2"/>
+
+    <TextView
+        android:id="@+id/titolo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:shadowColor="#000000"
+        android:shadowDx="8"
+        android:shadowDy="2"
+        android:shadowRadius="1.6"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/medievalsharp"
+        android:textSize="60sp"
+        android:text="Pregaverso"
+        android:visibility="gone"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="@id/guidaAlette1"
+        app:layout_constraintStart_toStartOf="@id/guidaAlette3"
+        app:layout_constraintEnd_toStartOf="@id/guidaAlette2"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,12 +5,12 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.home_sacerdote.*
+import kotlinx.android.synthetic.main.homesacerdote.*
 import kotlinx.android.synthetic.main.popupbaiocchisacerdote.*
 import kotlinx.android.synthetic.main.popupbaiocchisacerdote.view.*
 import kotlinx.android.synthetic.main.popupinserimentomiracolo.view.*
@@ -20,7 +20,9 @@ class HomeSacerdote : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.home_sacerdote)
+        setContentView(R.layout.homesacerdote)
+
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
 
         // nascondo la ActionBar per estetica
         supportActionBar?.hide()
@@ -33,11 +35,11 @@ class HomeSacerdote : AppCompatActivity() {
 
         // dichiaro un adapter che gestisce la visualizzazione di todoListItem
         val adapter = AdattatoreMiracoliSacerdote(listaMiracoli, this)
-        recyclerView.adapter = adapter
+        recyclerViewSacerdote.adapter = adapter
 
         // dichiaro un LinearLayoutManager
         val layoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = layoutManager
+        recyclerViewSacerdote.layoutManager = layoutManager
 
         // helper che permette di intercettare uno swipe
         ItemTouchHelper(
@@ -67,7 +69,7 @@ class HomeSacerdote : AppCompatActivity() {
             }
 
             // il touchHelper lavora sulla recyclerView
-        ).attachToRecyclerView(recyclerView)
+        ).attachToRecyclerView(recyclerViewSacerdote)
 
 
         // listener per il pulsante flottante
@@ -81,20 +83,20 @@ class HomeSacerdote : AppCompatActivity() {
             dialog = dialogBuilder!!.create()
             dialog.show()
             btnInserisci.setOnClickListener {
-                if (!TextUtils.isEmpty(view.testoInserito.text.toString())) {
-                    db.aggiungiMiracoli(
-                        view.descrInserita.text.toString(),
-                        view.nomesanto.text.toString(),
-                        view.costoInserito.text.toString().toInt(),
-                        view.testoInserito.text.toString()
-                    )
-                    val nuovo = Miracolo()
-                    nuovo.descr = view.descrInserita.text.toString()
-                    nuovo.nomeSanto = view.nomesanto.text.toString()
-                    nuovo.costo = view.costoInserito.text.toString().toInt()
-                    nuovo.testo = view.testoInserito.text.toString()
-                    listaMiracoli.add(nuovo)
-                    adapter.notifyItemInserted(adapter.miracoli.size)
+                if (view.descrInserita.text.toString() != "" || view.nomesanto.text.toString() != "" || view.costoInserito.text.toString() != "") {
+                    if( db.aggiungiMiracoli(    view.descrInserita.text.toString(),
+                                                view.nomesanto.text.toString(),
+                                                view.costoInserito.text.toString().toInt(),
+                                                view.testoInserito.text.toString()
+                                            )){
+                        val nuovo = Miracolo()
+                        nuovo.descr = view.descrInserita.text.toString()
+                        nuovo.nomeSanto = view.nomesanto.text.toString()
+                        nuovo.costo = view.costoInserito.text.toString().toInt()
+                        nuovo.testo = view.testoInserito.text.toString()
+                        listaMiracoli.add(nuovo)
+                        adapter.notifyItemInserted(adapter.miracoli.size)
+                    }
                     dialog!!.dismiss()
                 }
             }
@@ -108,23 +110,30 @@ class HomeSacerdote : AppCompatActivity() {
                 popup.show()
 
                 val btnConferma = viewPopup.btnConferma
+                val inseriti = viewPopup.nBaiocchiInseriti
 
                 btnConferma.setOnClickListener {
                     popup.dismiss()
                     /*
-                    if(nBaiocchiInseriti.text.toString().toInt() < 0){
+                    if(inseriti.text.toString().toInt() < 0){
                         btnConferma.text = ""
                         btnConferma.hint = "calmo, padre."
-                    } else if(nBaiocchiInseriti.text.toString().toInt() > 80){
+                    } else if(inseriti.text.toString().toInt() > 80){
 
                         btnConferma.text = ""
-                        btnConferma.hint = "forse intendete ${(nBaiocchiInseriti.text.toString().toInt()%10)}?"
+                        btnConferma.hint = "forse intendete ${(inseriti.text.toString().toInt()%10)}?"
                     } else
-                        */
-                        startActivity(Intent(this@HomeSacerdote, LoginPlebeo::class.java))
+
+                     */
+                    //baiocchiPassati = inseriti.text.toString().toInt()
+                    startActivity(Intent(this@HomeSacerdote, LoginPlebeo::class.java).putExtra("baiocchiPassati",inseriti.text.toString().toInt()))
                 }
             }
-
         }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        Log.d("NON SI PUO'","FREGATO")
     }
 }
