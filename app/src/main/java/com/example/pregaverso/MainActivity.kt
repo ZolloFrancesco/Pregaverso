@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         val fadeOut = AnimationUtils.loadAnimation(applicationContext,R.anim.fade_out)
         val bounce = AnimationUtils.loadAnimation(applicationContext,R.anim.bounce)
 
-
         // service
         startService(Intent(this,ServizioSottofondo::class.java))
 
